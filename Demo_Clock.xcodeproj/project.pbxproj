@@ -11,8 +11,6 @@
 		430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430DA28E1C4F81BC00C4E60C /* Main.storyboard */; };
 		430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430DA2911C4F81BC00C4E60C /* Assets.xcassets */; };
 		430DA2951C4F81BC00C4E60C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430DA2931C4F81BC00C4E60C /* LaunchScreen.storyboard */; };
-		430DA2A01C4F81BC00C4E60C /* Demo_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA29F1C4F81BC00C4E60C /* Demo_ClockTests.swift */; };
-		430DA2AB1C4F81BC00C4E60C /* Demo_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA2AA1C4F81BC00C4E60C /* Demo_ClockUITests.swift */; };
 		430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA2B91C4F820900C4E60C /* LXMBaseViewController.swift */; };
 		430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA2BA1C4F820900C4E60C /* LXMConsoleViewController.swift */; };
 		430DA2BF1C4F820900C4E60C /* LXMMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA2BB1C4F820900C4E60C /* LXMMacro.swift */; };
@@ -51,11 +49,7 @@
 		430DA2941C4F81BC00C4E60C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		430DA2961C4F81BC00C4E60C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430DA29B1C4F81BC00C4E60C /* Demo_ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo_ClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		430DA29F1C4F81BC00C4E60C /* Demo_ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo_ClockTests.swift; sourceTree = "<group>"; };
-		430DA2A11C4F81BC00C4E60C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430DA2A61C4F81BC00C4E60C /* Demo_ClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo_ClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		430DA2AA1C4F81BC00C4E60C /* Demo_ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo_ClockUITests.swift; sourceTree = "<group>"; };
-		430DA2AC1C4F81BC00C4E60C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430DA2B91C4F820900C4E60C /* LXMBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMBaseViewController.swift; sourceTree = "<group>"; };
 		430DA2BA1C4F820900C4E60C /* LXMConsoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConsoleViewController.swift; sourceTree = "<group>"; };
 		430DA2BB1C4F820900C4E60C /* LXMMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMMacro.swift; sourceTree = "<group>"; };
@@ -98,8 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				430DA2891C4F81BC00C4E60C /* Demo_Clock */,
-				430DA29E1C4F81BC00C4E60C /* Demo_ClockTests */,
-				430DA2A91C4F81BC00C4E60C /* Demo_ClockUITests */,
 				430DA2881C4F81BB00C4E60C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,24 +118,6 @@
 				430DA2961C4F81BC00C4E60C /* Info.plist */,
 			);
 			path = Demo_Clock;
-			sourceTree = "<group>";
-		};
-		430DA29E1C4F81BC00C4E60C /* Demo_ClockTests */ = {
-			isa = PBXGroup;
-			children = (
-				430DA29F1C4F81BC00C4E60C /* Demo_ClockTests.swift */,
-				430DA2A11C4F81BC00C4E60C /* Info.plist */,
-			);
-			path = Demo_ClockTests;
-			sourceTree = "<group>";
-		};
-		430DA2A91C4F81BC00C4E60C /* Demo_ClockUITests */ = {
-			isa = PBXGroup;
-			children = (
-				430DA2AA1C4F81BC00C4E60C /* Demo_ClockUITests.swift */,
-				430DA2AC1C4F81BC00C4E60C /* Info.plist */,
-			);
-			path = Demo_ClockUITests;
 			sourceTree = "<group>";
 		};
 		430DA2B81C4F820900C4E60C /* LXMKit */ = {
@@ -325,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				430DA2A01C4F81BC00C4E60C /* Demo_ClockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				430DA2AB1C4F81BC00C4E60C /* Demo_ClockUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
