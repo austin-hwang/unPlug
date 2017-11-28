@@ -23,6 +23,17 @@ class DCHomeViewController: LXMBaseViewController {
         
         self.dataArray = DCAlarmManager.sharedInstance.alarmArray //swift的数组是struct，是值类型，写的时候要特别注意
     }
+    
+    // Whenever view is about to appear, call updateTimeLabel()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Alarm"
+        
+        self.setupTableView()
+        self.setupNavigationBar()
+        
+        self.dataArray = DCAlarmManager.sharedInstance.alarmArray //swift的数组是struct，是值类型，写的时候要特别注意
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
