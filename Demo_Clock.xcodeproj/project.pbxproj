@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09D78BBA1FD0DCE1002D0447 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 09D78BB91FD0DCE1002D0447 /* bell.mp3 */; };
-		09D78BBC1FD0E1DA002D0447 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D78BBB1FD0E1DA002D0447 /* UIWindow+Extension.swift */; };
+		1145D77A1FD0E84800C97162 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1145D7791FD0E84700C97162 /* UIWindow+Extension.swift */; };
+		1145D77C1FD0E86100C97162 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1145D77B1FD0E86100C97162 /* bell.mp3 */; };
 		430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */; };
 		430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430DA28E1C4F81BC00C4E60C /* Main.storyboard */; };
 		430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430DA2911C4F81BC00C4E60C /* Assets.xcassets */; };
@@ -44,8 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09D78BB91FD0DCE1002D0447 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bell.mp3; path = "../../../Downloads/Alarm-ios-swift-master/IOS/Alarm/bell.mp3"; sourceTree = "<group>"; };
-		09D78BBB1FD0E1DA002D0447 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIWindow+Extension.swift"; path = "../../../Downloads/Alarm-ios-swift-master/IOS/Alarm/UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		1145D7791FD0E84700C97162 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		1145D77B1FD0E86100C97162 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		430DA2871C4F81BB00C4E60C /* Demo_Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo_Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		430DA28F1C4F81BC00C4E60C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,14 +113,14 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
-				09D78BBB1FD0E1DA002D0447 /* UIWindow+Extension.swift */,
+				1145D7791FD0E84700C97162 /* UIWindow+Extension.swift */,
 				430DA2C11C4F848100C4E60C /* Home */,
 				430DA2B81C4F820900C4E60C /* LXMKit */,
 				430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */,
 				430DA28E1C4F81BC00C4E60C /* Main.storyboard */,
 				430DA2911C4F81BC00C4E60C /* Assets.xcassets */,
 				430DA2931C4F81BC00C4E60C /* LaunchScreen.storyboard */,
-				09D78BB91FD0DCE1002D0447 /* bell.mp3 */,
+				1145D77B1FD0E86100C97162 /* bell.mp3 */,
 				430DA2961C4F81BC00C4E60C /* Info.plist */,
 			);
 			path = Demo_Clock;
@@ -260,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430DA2951C4F81BC00C4E60C /* LaunchScreen.storyboard in Resources */,
-				09D78BBA1FD0DCE1002D0447 /* bell.mp3 in Resources */,
+				1145D77C1FD0E86100C97162 /* bell.mp3 in Resources */,
 				430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */,
 				430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */,
 			);
@@ -296,10 +296,10 @@
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
+				1145D77A1FD0E84800C97162 /* UIWindow+Extension.swift in Sources */,
 				430DA2BF1C4F820900C4E60C /* LXMMacro.swift in Sources */,
 				430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */,
 				430DA2C01C4F820900C4E60C /* LXMToolFunction.swift in Sources */,
-				09D78BBC1FD0E1DA002D0447 /* UIWindow+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

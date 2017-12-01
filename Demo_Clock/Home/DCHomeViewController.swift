@@ -89,6 +89,7 @@ extension DCHomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         let item = self.dataArray[indexPath.row]
         if let index = self.dataArray.index(of: item) {
             self.dataArray.remove(at: index)

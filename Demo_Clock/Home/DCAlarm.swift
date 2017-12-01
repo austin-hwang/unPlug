@@ -81,7 +81,6 @@ class DCAlarm: NSObject, NSCoding {
 fileprivate extension DCAlarm {
     
     fileprivate func addLocalNotificationForDate(_ date: Date, selectedDay: NSInteger) {
-        //selectedDay == 0则认为是只响一次的闹钟
         let calendar = Calendar.current
         let type: NSCalendar.Unit = [NSCalendar.Unit.year , NSCalendar.Unit.month , NSCalendar.Unit.day , NSCalendar.Unit.hour , NSCalendar.Unit.minute , NSCalendar.Unit.second , NSCalendar.Unit.weekday]
         var dateComponents = (calendar as NSCalendar).components(type, from: date)
