@@ -1,0 +1,93 @@
+/* Color Variables */
+/* Size Variables */
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  height: 100%; }
+
+h1, h2 {
+  margin: 0px;
+  padding: 0px; }
+
+input, button, input:active, input:focus, button:active, button:focus {
+  outline: 0px; }
+
+.app-title {
+  text-align: center;
+  color: #C5CAE9;
+  font-weight: 200;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px; }
+
+.container {
+  width: 260px;
+  margin: 0px auto;
+  text-align: center; }
+  .container .time-box {
+    color: #3F51B5;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-size: 36px;
+    margin-bottom: 10px; }
+  .container .alarm-input {
+    color: #9E9E9E;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 300ms;
+    height: 45px;
+    width: 61px;
+    font-size: 18px;
+    margin-right: 5px;
+    border: 3px #E0E0E0 solid; }
+  .container .alarm-input:focus {
+    border-color: #3F51B5; }
+  .container .alarm-btn {
+    cursor: pointer;
+    background-color: #E0E0E0;
+    height: 45px;
+    font-size: 18px;
+    border: 3px solid; }
+  .container .period-btn {
+    border-color: #E0E0E0;
+    color: #9E9E9E;
+    width: 61px; }
+  .container .active-period-btn {
+    background-color: #7986CB;
+    border-color: #7986CB;
+    color: #FFFFFF; }
+  .container .set-btn {
+    float: left;
+    width: 260px;
+    margin-top: 10px;
+    border-color: #7986CB;
+    background-color: #7986CB;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: border-color 300ms, background-color 300ms; }
+  .container .set-btn:hover {
+    border-color: #3F51B5;
+    background-color: #3F51B5; }
+  .container .alarm-list {
+    float: left;
+    text-align: left;
+    width: 260px; }
+  .container .alarm-item {
+    background-color: #E0E0E0;
+    color: #9E9E9E;
+    margin-bottom: 10px;
+    padding: 10px; }
+  .container .alert-box {
+    background-color: #F44336;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 260px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    display: none; }
+
+/*# sourceMappingURL=styles.css.map */
