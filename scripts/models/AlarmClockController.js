@@ -47,6 +47,9 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker) {
 		this.view.setClockView(this.app.clock);
 		if(this.app.clock.date.getSeconds() === 0 && this.app.checkAlarms()) {
 			this.view.showAlert('Ring! Your alarm just went off!');
+			console.log("RINGGGG");
+			var sound = document.getElementById("bell");
+			sound.Play();
 		}
 	}.bind(this))
 }

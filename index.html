@@ -18,6 +18,7 @@
 	</header>
 	<main class="container">
 		<div id="alertBox" class="alert-box"></div>
+		<div id="sound"></div>
 		<div id="timeBox" class="time-box"></div>
 		<div class="alarm-form">
 			<form id="alarmForm">
@@ -37,11 +38,12 @@
 			</div>
 		</div>
 	</main>
-	<script src="./scripts/models/Clock.js"></script>
-	<script src="./scripts/models/Alarm.js"></script>
-	<script src="./scripts/models/AlarmClockApp.js"></script>
-	<script src="./scripts/models/AlarmClockView.js"></script>
-	<script src="./scripts/models/AlarmClockController.js"></script>
- 	<script src="./scripts/app.js"></script>
+	<source src="bell.mp3" id="bell" enablejavascript="true">
+	<script>document.write('<script src="./scripts/models/Clock.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/Alarm.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockApp.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockView.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockController.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/app.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
 </body>
 </html>
