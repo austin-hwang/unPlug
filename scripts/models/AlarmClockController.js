@@ -50,6 +50,10 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker) {
 			var audElem = document.getElementsByTagName('audio')[0].getAttribute('id');
 			var song = document.getElementById(audElem);
 			song.play();
+			setTimeout(function(){
+				song.pause();
+				song.currentTime = 0;
+			}, 2000);
 		}
 	}.bind(this))
 }
