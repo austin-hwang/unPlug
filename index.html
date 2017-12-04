@@ -40,9 +40,28 @@
 				</div>
 			</div>
 		</div>
-		<div class="alarm-list">
-			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" class="alarm-btn set-btn">
-		</div>
+
+		<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+		<canvas id="canvas"></canvas>
+		<script>
+			var cameraInput = document.getElementById('cameraInput');
+			cameraInput.addEventListener('change', handleImage, false);
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			function handleImage(e){
+				var reader = new FileReader();
+				reader.onload = function(event){
+					var img = new Image();
+					img.onload = function(){
+						canvas.width = 500;
+						canvas.height = 500;
+						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+					}
+					img.src = event.target.result;
+				}
+				reader.readAsDataURL(e.target.files[0]);     
+			}
+		</script>
 	</main>
 	<audio src="bell.mp3" loop="true" id="bell" enablejavascript="true">
 	<script>document.write('<script src="./scripts/models/Clock.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
