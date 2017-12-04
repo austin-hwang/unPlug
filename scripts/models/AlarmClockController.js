@@ -12,22 +12,24 @@ AlarmClockController Class
 function AlarmClockController(app, view){
 	this.app = app;
 	this.view = view;
+	this.counter = 0;
 }
 
 //Consumes: DOM element containing periodBtns
 AlarmClockController.prototype.setPeriodBtnListener = function(el) {
 	el.addEventListener('click',function(event) {
 		event.preventDefault();
-		console.log("Clicked this button");
 		this.view.setSelectedPeriodBtn(event.target);
 		this.app.selectedPeriod = event.target.value;
 	}.bind(this));
 }
 
 AlarmClockController.prototype.setButtonListener = function() {
-	$('.buttons').on('click', 'button', function(){
-
-	});
+	$('.buttons').on('click', 'button', function(button){
+		console.log(button.target)
+		this.app.deleteAlarm(button.target);
+		this.view.setAlarmView(this.app.alarms);
+	}.bind(this));
 }
 
 //Consumes: Alarm form DOM element
@@ -39,11 +41,13 @@ AlarmClockController.prototype.setAlarmFormListener = function(el) {
 		var period = this.app.selectedPeriod;
 		var newAlarm = new Alarm(hour, min, period);
 		var newBtn = document.createElement("button");
-		newBtn.setAttribute("id", "deleteBtn");
+		var id = "deleteBtn" +  this.counter;
+		newBtn.setAttribute("id", id);
 		newBtn.innerHTML = "Delete Alarm";
 		if(newAlarm.isValid()) {
 			this.app.addAlarm(newAlarm, newBtn);
 			this.view.setAlarmView(this.app.alarms);
+			this.counter ++;
 		} else {
 			this.view.showAlert('Please Enter Valid Inputs');
 		}

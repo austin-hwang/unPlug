@@ -32,16 +32,13 @@ AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 		value: alarm
 	});
 }
-/*
+
 AlarmClockApp.prototype.deleteAlarm = function(button) {
-	for (var i = 0; i < alarms.length; i++) {
-		for (var j = 0; j < alarms[i].length; j++) {
-			if (alarms[i][j] == button) {
-				var row = i;
-			}
+	for (var i = 0; i < this.alarms.length; i++) {
+		if (this.alarms[i].key == button) {
+			this.alarms.splice(i, 1);
 		}
 	}
-	alarms.splice(row - 1, 1);
 }
 /*
 Purpose: to check alarms array for alarm equal to clock time
