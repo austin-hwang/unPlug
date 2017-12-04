@@ -47,6 +47,21 @@ AlarmClockView.prototype.setAlarmView = function(alarms) {
 	}, this)
 }
 
+AlarmClockView.prototype.snooze = function(date, alarms) {
+	song.pause();
+	song.currentTime = 0;
+	let hour = date.getHours();
+	let min = date.getMinutes() + 5;
+	let period = 'pm';
+	var newAlarm = new Alarm(hour, min, period);
+	if(newAlarm.isValid()) {
+		this.app.addAlarm(newAlarm);
+		this.view.setAlarmView(this.app.alarms);
+	} else {
+		this.view.showAlert('Could not snooze.');
+	}
+}
+
 // Purpose: displays the alert for 5 seconds
 AlarmClockView.prototype.showAlert = function(msg) {
 	this.alertBox.textContent = msg;
@@ -63,19 +78,4 @@ AlarmClockView.prototype.showAlert = function(msg) {
 	setTimeout(function(){
 		this.alertBox.style.display = 'none';
 	}, 5000);
-}
-
-AlarmClockView.prototype.snooze = function(date, alarms) {
-	song.pause();
-	song.currentTime = 0;
-	let hour = date.getHours();
-	let min = date.getMinutes();
-	let period = 'pm';
-	var newAlarm = new Alarm(hour, min, period);
-	if(newAlarm.isValid()) {
-		this.app.addAlarm(newAlarm);
-		this.view.setAlarmView(this.app.alarms);
-	} else {
-		this.view.showAlert('Could not snooze.');
-	}
 }
