@@ -107,6 +107,7 @@ input, button, input:active, input:focus, button:active, button:focus {
 	.delete-btn {
 		width: 260px;
 		margin-top: 10px;
+		margin-bottom: 10px;
 		border-color: #ff8080;
 		background-color: #ff8080;
 		color: #FFFFFF;
@@ -129,7 +130,6 @@ input, button, input:active, input:focus, button:active, button:focus {
 	.alarm-item {
 		background-color: $lightGrey;
 		color: $grey;
-		margin-bottom: 10px;
 		padding: 10px;
 	}
 
