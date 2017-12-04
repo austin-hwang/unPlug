@@ -33,13 +33,14 @@ AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 	});
 }
 
-<<<<<<< HEAD
 AlarmClockApp.prototype.deleteAlarm = function(button) {
 	for (var i = 0; i < this.alarms.length; i++) {
 		if (this.alarms[i].key == button) {
 			this.alarms.splice(i, 1);
 		}
-=======
+	}
+}
+
 AlarmClockApp.prototype.snooze = function(date, alarms) {
 	song.pause();
 	song.currentTime = 0;
@@ -52,7 +53,6 @@ AlarmClockApp.prototype.snooze = function(date, alarms) {
 		this.view.setAlarmView(this.app.alarms);
 	} else {
 		this.view.showAlert('Could not snooze.');
->>>>>>> ae203cd63a7027b052c29160ea4d4db392982e3c
 	}
 }
 
