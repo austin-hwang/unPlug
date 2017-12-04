@@ -17,6 +17,7 @@ document.onreadystatechange = function () {
 		var selectedPeriodBtn = document.getElementById('amBtn');
 		var periodBtns = document.getElementById('periodBtns');
 		var alarmForm = document.getElementById('alarmForm');
+		var deleteBtn = document.getElementById('deleteBtn');
 
 		//init Data Models
 		var app = new AlarmClockApp();
@@ -29,6 +30,7 @@ document.onreadystatechange = function () {
 		//set event listeners
 		controller.setPeriodBtnListener(periodBtns);
 		controller.setAlarmFormListener(alarmForm);
+		controller.setButtonListener(deleteBtn)
 
 		//initialize worker
 		var clockWorker = new Worker('scripts/util/clockWorker.js');

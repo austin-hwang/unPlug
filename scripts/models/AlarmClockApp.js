@@ -16,6 +16,7 @@ AlarmClockApp Class
 function AlarmClockApp() {
 	this.clock = new Clock();
 	this.alarms = [];
+	this.buttons = [];
 	this.selectedPeriod = 'am';
 }
 
@@ -25,17 +26,31 @@ AlarmClockApp.prototype.setClock = function(date) {
 }
 
 //Consumes: Alarm object
-AlarmClockApp.prototype.addAlarm = function(alarm) {
-	this.alarms.push(alarm);
+AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
+	this.alarms.push({
+		key:   btn,
+		value: alarm
+	});
 }
-
+/*
+AlarmClockApp.prototype.deleteAlarm = function(button) {
+	for (var i = 0; i < alarms.length; i++) {
+		for (var j = 0; j < alarms[i].length; j++) {
+			if (alarms[i][j] == button) {
+				var row = i;
+			}
+		}
+	}
+	alarms.splice(row - 1, 1);
+}
 /*
 Purpose: to check alarms array for alarm equal to clock time
 Returns: boolean
 */
 AlarmClockApp.prototype.checkAlarms = function() {
 	var ring = false;
-	this.alarms.forEach(function(alarm) {
+	this.alarms.forEach(function(item) {
+		alarm = item.value;
 		if(alarm.equals(this.clock.date))
 			ring = true;
 	}, this);

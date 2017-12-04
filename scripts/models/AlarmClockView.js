@@ -34,11 +34,16 @@ AlarmClockView.prototype.setSelectedPeriodBtn = function(btn) {
 // Consumes: array of Alarms, display alarms
 AlarmClockView.prototype.setAlarmView = function(alarms) {
 	this.alarmBox.innerHTML = '';
-	alarms.forEach(function(alarm) {
+	alarms.forEach(function(item) {
+		var alarm = item.value;
 		var alarmEl = document.createElement('div');
 		alarmEl.classList.add('alarm-item');
 		alarmEl.textContent = alarm.toString();
 		this.alarmBox.appendChild(alarmEl);
+		var button = item.key;
+		button.classList.add('alarm-btn');
+		button.classList.add('delete-btn');
+		this.alarmBox.appendChild(button);
 	}, this)
 }
 
