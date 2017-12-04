@@ -45,21 +45,32 @@ AlarmClockView.prototype.setAlarmView = function(alarms) {
 // Purpose: displays the alert for 5 seconds
 AlarmClockView.prototype.showAlert = function(msg) {
 	this.alertBox.textContent = msg;
-	var snoozeBtn = document.createElement("button").setAttribute("id", "snoozeBtn");
-	var offBtn = document.createElement("button").setAttribute("id", "offBtn");
+	var snoozeBtn = document.createElement("button");
+	snoozeBtn.setAttribute("id", "snoozeBtn");
+	var offBtn = document.createElement("button");
+	offBtn.setAttribute("id", "offBtn");
 	snoozeBtn.innerHTML = "Snooze?";
 	offBtn.innerHTML = "Turn Off?";
 	this.alertBox.appendChild(snoozeBtn);
 	this.alertBox.appendChild(offBtn);
 	this.alertBox.style.display = 'block';
-	document.getElementById("snoozeBtn").onclick = function() {snooze()};
+	document.getElementById("snoozeBtn").onclick = function() {snooze(this.clock.date)};
 	setTimeout(function(){
 		this.alertBox.style.display = 'none';
 	}, 5000);
 }
 
-AlarmClockView.prototype.snooze = function(alarms) {
+AlarmClockView.prototype.snooze = function(date, alarms) {
 	song.pause();
 	song.currentTime = 0;
-	alarms.push()
+	let hour = date.getHours();
+	let min = date.getMinutes();
+	let period = 'pm';
+	var newAlarm = new Alarm(hour, min, period);
+	if(newAlarm.isValid()) {
+		this.app.addAlarm(newAlarm);
+		this.view.setAlarmView(this.app.alarms);
+	} else {
+		this.view.showAlert('Could not snooze.');
+	}
 }
