@@ -40,13 +40,10 @@ AlarmClockView.prototype.setAlarmView = function(alarms) {
 		alarmEl.classList.add('alarm-item');
 		alarmEl.textContent = alarm.toString();
 		var button = item.key;
-		//button.classList.add('alarm-btn');
+		button.classList.add('alarm-btn');
 		button.classList.add('delete-btn');
-		var div = document.createElement('div');
-		div.classList.add('alarm-item');
 		this.alarmBox.appendChild(alarmEl);
 		this.alarmBox.appendChild(button);
-		
 	}, this)
 }
 
