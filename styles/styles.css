@@ -72,10 +72,9 @@ input, button, input:active, input:focus, button:active, button:focus {
     border-color: #3F51B5;
     background-color: #3F51B5; }
   .container .delete-btn {
-    float: left;
+    margin-bottom: 20px;
     width: 260px;
-    margin-top: 10px;
-    border-color: #ff8080
+    border-color: #ff8080;
     background-color: #ff8080;
     color: #FFFFFF;
     padding-left: 20px;

@@ -103,6 +103,19 @@ input, button, input:active, input:focus, button:active, button:focus {
 		background-color: $primaryColor;
 
 	}
+	.delete-btn {
+		margin-bottom: 20px;
+		width: 260px;
+		border-color: #ff8080;
+		background-color: #ff8080;
+		color: #FFFFFF;
+		padding-left: 20px;
+		padding-right: 20px;
+		transition: border-color 300ms, background-color 300ms; }
+		
+	.delete-btn:hover {
+		border-color: #e60000;
+		background-color: #e60000; }
 
 	.alarm-list {
 		float: left;
