@@ -50,8 +50,21 @@ AlarmClockView.prototype.setAlarmView = function(alarms) {
 // Purpose: displays the alert for 5 seconds
 AlarmClockView.prototype.showAlert = function(msg) {
 	this.alertBox.textContent = msg;
+	var snoozeBtn = document.createElement("button").setAttribute("id", "snoozeBtn");
+	var offBtn = document.createElement("button").setAttribute("id", "offBtn");
+	snoozeBtn.innerHTML = "Snooze?";
+	offBtn.innerHTML = "Turn Off?";
+	this.alertBox.appendChild(snoozeBtn);
+	this.alertBox.appendChild(offBtn);
 	this.alertBox.style.display = 'block';
+	document.getElementById("snoozeBtn").onclick = function() {snooze()};
 	setTimeout(function(){
 		this.alertBox.style.display = 'none';
 	}, 5000);
+}
+
+AlarmClockView.prototype.snooze = function(alarms) {
+	song.pause();
+	song.currentTime = 0;
+	alarms.push()
 }
