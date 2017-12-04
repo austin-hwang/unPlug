@@ -12,7 +12,7 @@ AlarmClockApp Class
 
 */
 
-//Clock.js must be laoded prior to callign this constructor
+//Clock.js must be loaded prior to callign this constructor
 function AlarmClockApp() {
 	this.clock = new Clock();
 	this.alarms = [];
@@ -32,17 +32,22 @@ AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 		value: alarm
 	});
 }
-/*
-AlarmClockApp.prototype.deleteAlarm = function(button) {
-	for (var i = 0; i < alarms.length; i++) {
-		for (var j = 0; j < alarms[i].length; j++) {
-			if (alarms[i][j] == button) {
-				var row = i;
-			}
-		}
+
+AlarmClockApp.prototype.snooze = function(date, alarms) {
+	song.pause();
+	song.currentTime = 0;
+	let hour = date.getHours();
+	let min = date.getMinutes() + 5;
+	let period = 'pm';
+	var newAlarm = new Alarm(hour, min, period);
+	if(newAlarm.isValid()) {
+		this.app.addAlarm(newAlarm);
+		this.view.setAlarmView(this.app.alarms);
+	} else {
+		this.view.showAlert('Could not snooze.');
 	}
-	alarms.splice(row - 1, 1);
 }
+
 /*
 Purpose: to check alarms array for alarm equal to clock time
 Returns: boolean
@@ -51,7 +56,7 @@ AlarmClockApp.prototype.checkAlarms = function() {
 	var ring = false;
 	this.alarms.forEach(function(item) {
 		alarm = item.value;
-		if(alarm.equals(this.clock.date))
+				if(alarm.equals(this.clock.date))
 			ring = true;
 	}, this);
 	return ring;
