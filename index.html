@@ -6,8 +6,9 @@
   <meta name="description" content="Alarm Clock App">
   <meta name="author" content="Will Kashdan">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/styles.css">
+  <script>document.write('<link rel="stylesheet" href="./styles/styles.css?dev=' + Math.floor(Math.random() * 100) + '"\>');</script>
   <link rel="icon shortcut" href="https://www.squarespace.com/favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -33,11 +34,15 @@
 		</div>
 		<div class="alarm-list">
 			<h2 class="app-title">Alarms</h2>
-			<div id="alarmBox">
-				<div class="alarm-item">No Alarms Set</div>
+			<div class="buttons">
+				<div id="alarmBox">
+					<div class="alarm-item">No Alarms Set</div>
+				</div>
 			</div>
 		</div>
-		<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+		<div class="alarm-list">
+			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" class="alarm-btn set-btn">
+		</div>
 	</main>
 	<audio src="bell.mp3" loop="true" id="bell" enablejavascript="true">
 	<script>document.write('<script src="./scripts/models/Clock.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
