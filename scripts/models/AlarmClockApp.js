@@ -31,6 +31,11 @@ AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 		key:   btn,
 		value: alarm
 	});
+	swal(
+		'Adding alarm..',
+		'Added!',
+		'success'
+	  )
 }
 
 AlarmClockApp.prototype.deleteAlarm = function(button) {

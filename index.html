@@ -12,6 +12,27 @@
   <link rel="stylesheet" href="./styles/alertify.default.css"/>
   <script src="./scripts/alertify.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert2@7.0.7/dist/sweetalert2.all.js"></script>
+  <script type="text/javascript" src="./scripts/browserfs.min.js"></script>
+  <script type="text/javascript">
+	// Installs globals onto window:
+	// * Buffer
+	// * require (monkey-patches if already defined)
+	// * process
+	// You can pass in an arbitrary object if you do not wish to pollute
+	// the global namespace.
+	BrowserFS.install(window);
+	// Configures BrowserFS to use the LocalStorage file system.
+	BrowserFS.configure({
+	  fs: "LocalStorage"
+	}, function(e) {
+	  if (e) {
+		// An error happened!
+		throw e;
+	  }
+	  // Otherwise, BrowserFS is ready-to-use!
+	});
+  </script>
   
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -35,6 +56,19 @@
 				</div>
 				<button id="setAlarmBtn" form="alarmForm" class="alarm-btn set-btn">SET ALARM</button>
 			</form>
+			<button onclick="openTransactions()" id="transactions" class="alarm-btn set-btn">TRANSACTIONS</button>
+			<script>
+				function openTransactions(){
+					var content = ""
+					fs.readFile('/test.txt', function(err, contents) {
+					   content = contents.toString();
+					});
+					swal({
+						html: "<p>" + content + "</p>",
+						background: '#fff url(//bit.ly/1Nqn9HU)'
+					})
+				}
+			</script>
 		</div>
 		<div class="alarm-list">
 			<h2 class="app-title">Alarms</h2>
@@ -57,7 +91,25 @@
 		});
 			
 		</script>
-		<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+		<style>
+			.upload-btn-wrapper {
+				position: relative;
+				overflow: hidden;
+				display: inline-block;
+			  }
+
+			  .upload-btn-wrapper input[type=file] {
+				font-size: 100px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+			  }
+		</style>
+		<div class="upload-btn-wrapper">
+			<button class="alarm-btn set-btn">Upload a file</button>
+			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" />
+		</div>
 		<canvas id="canvas"></canvas>
 		<script>
 			var cameraInput = document.getElementById('cameraInput');
@@ -69,8 +121,6 @@
 				reader.onload = function(event){
 					var img = new Image();
 					img.onload = function(){
-						canvas.width = 500;
-						canvas.height = 500;
 						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, canvas.width, canvas.height);
 					}
 					img.src = event.target.result;
