@@ -6,7 +6,7 @@
   <meta name="description" content="Alarm Clock App">
   <meta name="author" content="Will Kashdan">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>document.write('<link rel="stylesheet" href="./styles/styles.css?dev=' + Math.floor(Math.random() * 100) + '"\>');</script>
+  <script>document.write('<link rel="stylesheet" href="./styles/styles.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <link rel="icon shortcut" href="https://www.squarespace.com/favicon.ico">
   <link rel="stylesheet" href="./styles/alertify.core.css" />
   <link rel="stylesheet" href="./styles/alertify.default.css"/>
@@ -56,7 +56,7 @@
 				</div>
 				<button id="setAlarmBtn" form="alarmForm" class="alarm-btn set-btn">SET ALARM</button>
 			</form>
-			<button onclick="openTransactions()" id="transactions" class="alarm-btn set-btn">TRANSACTIONS</button>
+			<button onclick="openTransactions()" id="transactions" class="alarm-btn transaction-btn">TRANSACTIONS</button>
 			<script>
 				function openTransactions(){
 					var content = ""
@@ -104,10 +104,12 @@
 				left: 0;
 				top: 0;
 				opacity: 0;
+				cursor: pointer;
 			  }
+
 		</style>
 		<div class="upload-btn-wrapper">
-			<button class="alarm-btn set-btn">Upload a file</button>
+			<button class="alarm-btn upload-btn">Upload a file</button>
 			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" />
 		</div>
 		<canvas id="canvas"></canvas>

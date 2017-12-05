@@ -121,6 +121,40 @@ input, button, input:active, input:focus, button:active, button:focus {
 		background-color: #e60000; 
 	}
 
+	.transaction-btn {
+		width: 260px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border-color: #62d645;
+		background-color: #62d645;
+		color: #FFFFFF;
+		padding-left: 20px;
+		padding-right: 20px;
+		transition: border-color 300ms, background-color 300ms; 
+	}
+	
+	.transaction-btn:hover {
+		border-color: green;
+		background-color: green; 
+	}
+
+	.upload-btn {
+		width: 260px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border-color: #5ab2ec;
+		background-color: #5ab2ec;
+		color: #FFFFFF;
+		padding-left: 20px;
+		padding-right: 20px;
+		transition: border-color 300ms, background-color 300ms; 
+	}
+	
+	.upload-btn:hover {
+		border-color: blue;
+		background-color: blue; 
+	}
+
 	.alarm-list {
 		float: left;
 		text-align: left;
