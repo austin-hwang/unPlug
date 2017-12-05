@@ -65,19 +65,19 @@
 			<script>
 				function openTransactions(){
 					var content = ""
-					fs.readFile('/test.txt', function(err, contents) {
+					fs.readFile('/transactions.txt', function(err, contents) {
 					   content = contents.toString();
 					});
 					swal({
-						html: "<p>" + content + "</p>",
-						background: '#fff url(//bit.ly/1Nqn9HU)'
+						title: "<p>" + content + "</p>",
+						background: '#fff url(//thumbs.dreamstime.com/b/color-money-background-stationery-739106.jpg)',
 					})
 				}
 			</script>
 		</div>
 		<section>
-			<select class="cs-select cs-skin-elastic">
-				<option value="" disabled selected>Donate to a Non-Profit</option>
+			<select id="nonprofit" class="cs-select cs-skin-elastic">
+				<option value="" disabled selected>DONATE TO A NONPROFIT</option>
 				<option value="Save the Children">Save the Children</option>
 				<option value="Feed the Hungry">Feed the Hungry</option>
 				<option value="The Wildlife Trusts">The Wildlife Trusts</option>
@@ -86,7 +86,7 @@
 		</section>
 		<div>
 		<form>
-			<input step=".1" type="number" min="1" max="100" value="1" />
+			<input id="money" step=".1" type="number" min="1" max="100" value="1" />
 		</form>
 		</div>
 		<div class="alarm-list">
@@ -132,9 +132,10 @@
 		</div>
 		<div class="upload-btn-wrapper">
 				<button class="alarm-btn upload-btn">Upload second image</button>
-				<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" />
+				<input type="file" capture="camera" accept="image/*" id="cameraInput2" name="cameraInput2" />
 			</div>
 		<canvas id="canvas"></canvas>
+		<canvas id="canvas2"></canvas>
 		<script>
 			var cameraInput = document.getElementById('cameraInput');
 			cameraInput.addEventListener('change', handleImage, false);
@@ -150,6 +151,23 @@
 					img.src = event.target.result;
 				}
 				reader.readAsDataURL(e.target.files[0]);     
+			}
+		</script>
+		<script>
+			var cameraInput2 = document.getElementById('cameraInput2');
+			cameraInput2.addEventListener('change', handleImage, false);
+			var canvas2 = document.getElementById('canvas2');
+			var ctx2 = canvas2.getContext('2d');
+			function handleImage(e){
+				var reader2 = new FileReader();
+				reader2.onload = function(event){
+					var img2 = new Image();
+					img2.onload = function(){
+						ctx2.drawImage(img2,0,0, img2.width, img2.height, 0, 0, canvas2.width, canvas2.height);
+					}
+					img2.src = event.target.result;
+				}
+				reader2.readAsDataURL(e.target.files[0]);     
 			}
 		</script>
 	</main>

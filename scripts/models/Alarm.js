@@ -41,6 +41,11 @@ Alarm.prototype.toString = function() {
 
 //Returns: boolean if horu and min are valid
 Alarm.prototype.isValid = function() {
+	var selected = document.getElementById("nonprofit");
+	var nonprofit = selected.options[selected.selectedIndex].text;
+	if (nonprofit == "DONATE TO A NONPROFIT") {
+		return false;
+	}
 	return this.hour > 0 
 		&& this.hour < 13 
 		&& this.min > -1

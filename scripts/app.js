@@ -4,6 +4,7 @@ This file defines a main method and
 runs it when the DOM loads
 
 */
+var fs = require('fs');
 
 document.onreadystatechange = function () {
 
@@ -36,6 +37,8 @@ document.onreadystatechange = function () {
 		var clockWorker = new Worker('scripts/util/clockWorker.js');
 		controller.setClockWorkerListener(clockWorker);
 		
+		fs.writeFile('/transactions.txt', "", function(err) {
+		});
 	}
 
 	//run main method when DOM loads

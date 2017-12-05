@@ -18,8 +18,8 @@ input[type=number] {
   font-size: 1.2em;
   text-transform: uppercase;
   text-align: center;
-  color: #93504C;
-  border: 2px #93504C solid;
+  color: #62d645;
+  border: 2px #62d645 solid;
   background: none;
   outline: none;
   pointer-events: none; }
@@ -44,8 +44,8 @@ span.spinner > .add {
   font-weight: 700;
   font-size: 1.2em;
   line-height: 33px;
-  color: #93504C;
-  border: 2px #93504C solid;
+  color: #62d645;
+  border: 2px #62d645 solid;
   border-right: 0;
   border-radius: 2px 0 0 2px;
   cursor: pointer;
@@ -58,13 +58,13 @@ span.spinner > .add {
 
 span.spinner > .add {
   top: 0;
-  border: 2px #93504C solid;
+  border: 2px #62d645 solid;
   border-left: 0;
   border-radius: 0 2px 2px 0; }
 
 span.spinner > .sub:hover,
 span.spinner > .add:hover {
-  background: #93504C;
+  background: #62d645;
   color: #25323B; }
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {

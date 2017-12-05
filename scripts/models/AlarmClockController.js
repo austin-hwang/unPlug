@@ -125,7 +125,14 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 					'Snoozed!',
 					'Your alarm has been snoozed.',
 					'success'
-				  )
+					)
+				
+					var selected = document.getElementById("nonprofit");
+					var nonprofit = selected.options[selected.selectedIndex].text;
+					var transactionInfo = Date() + ": Donated $" + document.getElementById("money").value + " to " + nonprofit + "!\n"; 
+					console.log(transactionInfo);
+					fs.appendFile('/transactions.txt', transactionInfo, function(err) {
+					});
 				// result.dismiss can be 'cancel', 'overlay',
 				// 'close', and 'timer'
 				} else if (result.dismiss === 'cancel') {

@@ -8,7 +8,9 @@
     "grunt-contrib-uglify": "~0.2.2"
   },
   "scripts": {
-    "start": "npm run && http-server -p 3000"
+    "watch-styles": "sass --watch styles/styles.scss:styles/styles.css",
+    "sass": "sass styles/styles.scss styles/styles.css",
+    "start": "npm run sass && http-server -p 3000"
   },
   "author": "Austin Hwang and Manasi Maheshwari ",
   "license": "ISC",
