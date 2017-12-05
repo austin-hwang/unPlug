@@ -97,18 +97,6 @@
 				</div>
 			</div>
 		</div>
-		<script>
-					
-		alertify.set({
-			labels : {
-				ok     : "Snooze",
-				cancel : "Turn Off"
-			},
-				delay : 5000,
-			buttonReverse : false,
-			buttonFocus   : "ok"
-		});	
-		</script>
 		<style>
 			.upload-btn-wrapper {
 				position: relative;
@@ -127,11 +115,11 @@
 
 		</style>
 		<div class="upload-btn-wrapper">
-			<button class="alarm-btn upload-btn">Upload first image</button>
+			<button class="alarm-btn upload-btn">Take first image</button>
 			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" />
 		</div>
 		<div class="upload-btn-wrapper">
-				<button class="alarm-btn upload-btn">Upload second image</button>
+				<button class="alarm-btn upload-btn">Take second image</button>
 				<input type="file" capture="camera" accept="image/*" id="cameraInput2" name="cameraInput2" />
 			</div>
 		<canvas id="canvas"></canvas>
@@ -146,28 +134,37 @@
 				reader.onload = function(event){
 					var img = new Image();
 					img.onload = function(){
-						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, 260, canvas.height);
 					}
 					img.src = event.target.result;
 				}
 				reader.readAsDataURL(e.target.files[0]);     
 			}
-		</script>
-		<script>
+
 			var cameraInput2 = document.getElementById('cameraInput2');
-			cameraInput2.addEventListener('change', handleImage, false);
+			cameraInput2.addEventListener('change', handleImage2, false);
 			var canvas2 = document.getElementById('canvas2');
 			var ctx2 = canvas2.getContext('2d');
-			function handleImage(e){
-				var reader2 = new FileReader();
-				reader2.onload = function(event){
-					var img2 = new Image();
-					img2.onload = function(){
-						ctx2.drawImage(img2,0,0, img2.width, img2.height, 0, 0, canvas2.width, canvas2.height);
+			function handleImage2(e){
+				if (cameraInput.value){
+					console.log(cameraInput.value);
+					console.log(cameraInput);
+					var reader2 = new FileReader();
+					reader2.onload = function(event){
+						var img2 = new Image();
+						img2.onload = function(){
+							ctx2.drawImage(img2,0,0, img2.width, img2.height, 0, 0, 260, canvas2.height);
+						}
+						img2.src = event.target.result;
 					}
-					img2.src = event.target.result;
+					reader2.readAsDataURL(e.target.files[0]);
+				} else {
+					swal(
+						'Oops...',
+						"There's no image to compare to!",
+						'error'
+					);
 				}
-				reader2.readAsDataURL(e.target.files[0]);     
 			}
 		</script>
 	</main>
