@@ -9,6 +9,9 @@ AlarmClockController Class
 		- setAlarmFormListener
 		- setClockWorkerListener
 */
+
+var fs = require('fs');
+
 function AlarmClockController(app, view){
 	this.app = app;
 	this.view = view;
@@ -26,8 +29,25 @@ AlarmClockController.prototype.setPeriodBtnListener = function(el) {
 
 AlarmClockController.prototype.setButtonListener = function() {
 	$('.buttons').on('click', 'button', function(button){
-		console.log(button.target)
-		this.app.deleteAlarm(button.target);
+		swal({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		  }).then((result) => {
+			if (result.value) {
+			  this.app.deleteAlarm(button.target);
+			  this.view.setAlarmView(this.app.alarms);
+			  swal(
+				'Deleted!',
+				'Your alarm has been deleted.',
+				'success'
+			  )
+			}
+		  })
 		this.view.setAlarmView(this.app.alarms);
 	}.bind(this));
 }
@@ -64,11 +84,64 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 			var song = document.getElementById(audElem);
 			song.play();
 			var isSnoozed = false;
-			this.snoozed(song);
+			//this.snoozed(song);
+			swal({
+				title: 'Your alarm went off!',
+				text: "Would you like to snooze or turn off your alarm?",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Snooze!',
+				cancelButtonText: 'Turn Off!',
+				confirmButtonClass: 'btn btn-success',
+				cancelButtonClass: 'btn btn-danger',
+				buttonsStyling: false,
+				reverseButtons: true
+			  }).then((result) => {
+				if (result.value) {
+					song.pause();
+					song.currentTime = 0;
+					let hour = this.app.clock.date.getHours();
+					let min = this.app.clock.date.getMinutes() + 5;
+					if (min > 60) {
+						min = min % 60;
+						hour ++;
+					}
+					var period;
+					if (hour > 12) {
+						period = 'pm';
+					} else {
+						period = 'am';
+					}
+					var newAlarm = new Alarm(hour, min, period);
+					var newBtn = document.createElement("button");
+					var id = "deleteBtn" +  (this.counter + 1);
+					newBtn.setAttribute("id", id);
+					newBtn.innerHTML = "Delete Alarm";
+					this.app.addAlarm(newAlarm, newBtn);
+					this.view.setAlarmView(this.app.alarms);
+				  swal(
+					'Snoozed!',
+					'Your alarm has been snoozed.',
+					'success'
+				  )
+				// result.dismiss can be 'cancel', 'overlay',
+				// 'close', and 'timer'
+				} else if (result.dismiss === 'cancel') {
+					song.pause();
+					song.currentTime = 0;
+				  swal(
+					'Turned Off!',
+					'Your alarm has been turned off!',
+					'error'
+				  )
+				}
+			  })
 		}
 	}.bind(this))
 }
-
+/*
 AlarmClockController.prototype.snoozed = async function(song) {
 		await confirm(song);
 		let hour = this.app.clock.date.getHours();
@@ -90,6 +163,12 @@ AlarmClockController.prototype.snoozed = async function(song) {
 		newBtn.innerHTML = "Delete Alarm";
 		this.app.addAlarm(newAlarm, newBtn);
 		this.view.setAlarmView(this.app.alarms);
+
+		fs.writeFile('/test.txt', 'Cool, I can do this in the browser!', function(err) {
+			fs.readFile('/test.txt', function(err, contents) {
+			  console.log(contents.toString());
+			});
+		});
 }
 
 function confirm (song) {
@@ -100,12 +179,13 @@ function confirm (song) {
 				song.pause();
 				song.currentTime = 0;
 				isSnoozed = true;
+				resolve();
 			} else {
 				alertify.error("TURNED OFF");
 				song.pause();
 				song.currentTime = 0;
 			}
-			resolve();
 		});
 	})
 }
+*/

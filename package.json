@@ -13,5 +13,11 @@
     "start": "npm run sass && http-server -p 3000"
   },
   "author": "Austin Hwang and Manasi Maheshwari ",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "browserify-fs": "^1.0.0",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "mysql": "^2.15.0"
+  }
 }
