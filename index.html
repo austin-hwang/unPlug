@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.write('<link rel="stylesheet" href="./styles/styles.css?dev=' + Math.floor(Math.random() * 100) + '"\>');</script>
   <link rel="icon shortcut" href="https://www.squarespace.com/favicon.ico">
+  <link rel="stylesheet" href="./styles/alertify.core.css" />
+  <link rel="stylesheet" href="./styles/alertify.default.css"/>
+  <script src="./scripts/alertify.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <!--[if lt IE 9]>
@@ -41,7 +44,19 @@
 				</div>
 			</div>
 		</div>
-
+		<script>
+					
+		alertify.set({
+			labels : {
+				ok     : "Snooze",
+				cancel : "Turn Off"
+			},
+				delay : 5000,
+			buttonReverse : false,
+			buttonFocus   : "ok"
+		});
+			
+		</script>
 		<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
 		<canvas id="canvas"></canvas>
 		<script>
@@ -65,11 +80,11 @@
 		</script>
 	</main>
 	<audio src="bell.mp3" loop="true" id="bell" enablejavascript="true">
-	<script>document.write('<script src="./scripts/models/Clock.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-	<script>document.write('<script src="./scripts/models/Alarm.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-	<script>document.write('<script src="./scripts/models/AlarmClockApp.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-	<script>document.write('<script src="./scripts/models/AlarmClockView.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-	<script>document.write('<script src="./scripts/models/AlarmClockController.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-	<script>document.write('<script src="./scripts/app.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/Clock.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/Alarm.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockApp.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockView.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/models/AlarmClockController.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+	<script>document.write('<script src="./scripts/app.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
 </body>
 </html>

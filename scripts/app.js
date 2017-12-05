@@ -31,7 +31,7 @@ document.onreadystatechange = function () {
 		controller.setPeriodBtnListener(periodBtns);
 		controller.setAlarmFormListener(alarmForm);
 		controller.setButtonListener(deleteBtn)
-
+		
 		//initialize worker
 		var clockWorker = new Worker('scripts/util/clockWorker.js');
 		controller.setClockWorkerListener(clockWorker);

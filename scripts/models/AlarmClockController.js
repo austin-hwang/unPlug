@@ -55,19 +55,57 @@ AlarmClockController.prototype.setAlarmFormListener = function(el) {
 }
 
 // Consumes: clockWorker 
-AlarmClockController.prototype.setClockWorkerListener = function(worker) {
+AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed) {
 	worker.addEventListener('message', function(event){
 		this.app.setClock(event.data);
 		this.view.setClockView(this.app.clock);
 		if(this.app.clock.date.getSeconds() === 0 && this.app.checkAlarms()) {
-			this.view.showAlert('Ring! Your alarm just went off!');
 			var audElem = document.getElementsByTagName('audio')[0].getAttribute('id');
 			var song = document.getElementById(audElem);
 			song.play();
-			setTimeout(function(){
-				song.pause();
-				song.currentTime = 0;
-			}, 2000);
+			var isSnoozed = false;
+			this.snoozed(song);
 		}
 	}.bind(this))
+}
+
+AlarmClockController.prototype.snoozed = async function(song) {
+		await confirm(song);
+		let hour = this.app.clock.date.getHours();
+		let min = this.app.clock.date.getMinutes() + 5;
+		if (min > 60) {
+			min = min % 60;
+			hour ++;
+		}
+		var period;
+		if (hour > 12) {
+			period = 'pm';
+		} else {
+			period = 'am';
+		}
+		var newAlarm = new Alarm(hour, min, period);
+		var newBtn = document.createElement("button");
+		var id = "deleteBtn" +  (this.counter + 1);
+		newBtn.setAttribute("id", id);
+		newBtn.innerHTML = "Delete Alarm";
+		this.app.addAlarm(newAlarm, newBtn);
+		this.view.setAlarmView(this.app.alarms);
+}
+
+function confirm (song) {
+	return new Promise(resolve => {
+		alertify.confirm("RING! Your alarm just went off!", function (e) {
+			if (e) {
+				alertify.success("SNOOZED");
+				song.pause();
+				song.currentTime = 0;
+				isSnoozed = true;
+			} else {
+				alertify.error("TURNED OFF");
+				song.pause();
+				song.currentTime = 0;
+			}
+			resolve();
+		});
+	})
 }

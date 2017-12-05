@@ -1,13 +1,17 @@
 {
-  "name": "alarmclockapp",
+  "name": "unPlug",
   "version": "1.0.0",
   "description": "An Alarm Clock App - Squarespace Javascript Project",
   "main": "index.js",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.2"
+  },
   "scripts": {
     "watch-styles": "sass --watch styles/styles.scss:styles/styles.css",
     "sass": "sass styles/styles.scss styles/styles.css",
     "start": "npm run sass && http-server -p 3000"
   },
-  "author": "Will Kashdan",
+  "author": "Austin Hwang and Manasi Maheshwari ",
   "license": "ISC"
 }

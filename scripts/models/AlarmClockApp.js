@@ -40,22 +40,11 @@ AlarmClockApp.prototype.deleteAlarm = function(button) {
 		}
 	}
 }
+/*
+AlarmClockApp.prototype.snooze = function(song, counter) {
+	
 
-AlarmClockApp.prototype.snooze = function(date, alarms) {
-	song.pause();
-	song.currentTime = 0;
-	let hour = date.getHours();
-	let min = date.getMinutes() + 5;
-	let period = 'pm';
-	var newAlarm = new Alarm(hour, min, period);
-	if(newAlarm.isValid()) {
-		this.app.addAlarm(newAlarm);
-		this.view.setAlarmView(this.app.alarms);
-	} else {
-		this.view.showAlert('Could not snooze.');
-	}
 }
-
 /*
 Purpose: to check alarms array for alarm equal to clock time
 Returns: boolean
