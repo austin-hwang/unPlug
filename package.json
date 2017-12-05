@@ -15,6 +15,7 @@
   "author": "Austin Hwang and Manasi Maheshwari ",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/vision": "^0.13.0",
     "browserify-fs": "^1.0.0",
     "express": "^4.16.2",
     "fs": "0.0.1-security",

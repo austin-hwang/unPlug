@@ -69,7 +69,11 @@ AlarmClockController.prototype.setAlarmFormListener = function(el) {
 			this.view.setAlarmView(this.app.alarms);
 			this.counter ++;
 		} else {
-			this.view.showAlert('Please Enter Valid Inputs');
+			swal(
+				'Oops...',
+				"Please enter valid inputs! (Don't forget to choose a nonprofit!)",
+				'error'
+			);
 		}
 	}.bind(this));
 }
