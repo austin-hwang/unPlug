@@ -45,11 +45,7 @@ AlarmClockApp.prototype.deleteAlarm = function(button) {
 		}
 	}
 }
-/*
-AlarmClockApp.prototype.snooze = function(song, counter) {
-	
 
-}
 /*
 Purpose: to check alarms array for alarm equal to clock time
 Returns: boolean
