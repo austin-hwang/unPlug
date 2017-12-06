@@ -133,6 +133,11 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 					console.log(transactionInfo);
 					fs.appendFile('/transactions.txt', transactionInfo, function(err) {
 					});
+
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", "http://localhost:1337/charge", true);
+					xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+					xhr.send(JSON.stringify({ amount: (document.getElementById("money").value)*100 }));
 				// result.dismiss can be 'cancel', 'overlay',
 				// 'close', and 'timer'
 				} else if (result.dismiss === 'cancel') {
