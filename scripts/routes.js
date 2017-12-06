@@ -19,3 +19,5 @@ app.post("/charge", function(req, res){
         // asynchronously called
       });
 });
+
+app.listen(1337, () => console.log('App listening on port 1337!'))
