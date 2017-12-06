@@ -17,7 +17,7 @@ function AlarmClockApp() {
 	this.clock = new Clock();
 	this.alarms = [];
 	this.buttons = [];
-	this.selectedPeriod = 'am';
+	// this.selectedPeriod = 'am';
 }
 
 // Consumes: Date Object

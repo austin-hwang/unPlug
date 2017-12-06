@@ -113,11 +113,13 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 						hour ++;
 					}
 					var period;
+					console.log(hour);
 					if (hour > 12) {
 						period = 'pm';
 					} else {
 						period = 'am';
 					}
+					console.log(period);
 					var newAlarm = new Alarm(hour, min, period);
 					var newBtn = document.createElement("button");
 					var id = "deleteBtn" +  (this.counter + 1);
