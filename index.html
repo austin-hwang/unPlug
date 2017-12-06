@@ -125,6 +125,47 @@
 			</div>
 		<canvas id="canvas"></canvas>
 		<canvas id="canvas2"></canvas>
+		<script>
+			var cameraInput = document.getElementById('cameraInput');
+			cameraInput.addEventListener('change', handleImage, false);
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			function handleImage(e){
+				var reader = new FileReader();
+				reader.onload = function(event){
+					var img = new Image();
+					img.onload = function(){
+						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, 260, canvas.height);
+					}
+					img.src = event.target.result;
+				}
+				reader.readAsDataURL(e.target.files[0]);     
+			}
+
+			var cameraInput2 = document.getElementById('cameraInput2');
+			cameraInput2.addEventListener('change', handleImage2, false);
+			var canvas2 = document.getElementById('canvas2');
+			var ctx2 = canvas2.getContext('2d');
+			function handleImage2(e){
+				if (cameraInput.value){
+					var reader2 = new FileReader();
+					reader2.onload = function(event){
+						var img2 = new Image();
+						img2.onload = function(){
+							ctx2.drawImage(img2,0,0, img2.width, img2.height, 0, 0, 260, canvas2.height);
+						}
+						img2.src = event.target.result;
+					}
+					reader2.readAsDataURL(e.target.files[0]);
+				} else {
+					swal(
+						'Oops...',
+						"There's no image to compare to!",
+						'error'
+					);
+				}
+			}
+		</script>
 	</main>
 	<script src="scripts/classie.js"></script>
 	<script src="scripts/selectFx.js"></script>
