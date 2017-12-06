@@ -43,7 +43,7 @@ Alarm.prototype.toString = function() {
 Alarm.prototype.isValid = function() {
 	var selected = document.getElementById("nonprofit");
 	var nonprofit = selected.options[selected.selectedIndex].text;
-	if (nonprofit == "DONATE TO A NONPROFIT") {
+	if (nonprofit == "SELECT NONPROFITS") {
 		return false;
 	}
 	return this.hour > 0 

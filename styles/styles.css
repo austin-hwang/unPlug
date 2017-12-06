@@ -18,8 +18,8 @@ input[type=number] {
   font-size: 1.2em;
   text-transform: uppercase;
   text-align: center;
-  color: #62d645;
-  border: 2px #62d645 solid;
+  color: orange;
+  border: 2px orange solid;
   background: none;
   outline: none;
   pointer-events: none; }
@@ -44,8 +44,8 @@ span.spinner > .add {
   font-weight: 700;
   font-size: 1.2em;
   line-height: 33px;
-  color: #62d645;
-  border: 2px #62d645 solid;
+  color: orange;
+  border: 2px orange solid;
   border-right: 0;
   border-radius: 2px 0 0 2px;
   cursor: pointer;
@@ -58,14 +58,14 @@ span.spinner > .add {
 
 span.spinner > .add {
   top: 0;
-  border: 2px #62d645 solid;
+  border: 2px orange solid;
   border-left: 0;
   border-radius: 0 2px 2px 0; }
 
 span.spinner > .sub:hover,
 span.spinner > .add:hover {
-  background: #62d645;
-  color: #25323B; }
+  background: orange;
+  color: white; }
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; }
@@ -75,8 +75,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 html, body {
   margin: 0px;
   padding: 0px;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  height: 100%; }
+  font-family: 'Raleway', Arial, sans-serif;
+  height: 100%;
+  background-color: #fffed8; }
 
 h1, h2 {
   margin: 0px;
@@ -87,7 +88,15 @@ input, button, input:active, input:focus, button:active, button:focus {
 
 .app-title {
   text-align: center;
-  color: #C5CAE9;
+  color: #5ab2ec;
+  font-weight: 200;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px; }
+
+.app-title1 {
+  text-align: center;
+  color: #7986CB;
   font-weight: 200;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -98,7 +107,7 @@ input, button, input:active, input:focus, button:active, button:focus {
   margin: 0px auto;
   text-align: center; }
   .container .time-box {
-    color: #3F51B5;
+    color: #5ab2ec;
     font-weight: 400;
     letter-spacing: 3px;
     font-size: 36px;
@@ -115,7 +124,7 @@ input, button, input:active, input:focus, button:active, button:focus {
     margin-right: 5px;
     border: 3px #E0E0E0 solid; }
   .container .alarm-input:focus {
-    border-color: #3F51B5; }
+    border-color: blue; }
   .container .alarm-btn {
     cursor: pointer;
     background-color: #E0E0E0;
@@ -127,22 +136,22 @@ input, button, input:active, input:focus, button:active, button:focus {
     color: #9E9E9E;
     width: 61px; }
   .container .active-period-btn {
-    background-color: #7986CB;
-    border-color: #7986CB;
+    background-color: #5ab2ec;
+    border-color: #5ab2ec;
     color: #FFFFFF; }
   .container .set-btn {
     float: left;
     width: 260px;
     margin-top: 10px;
-    border-color: #7986CB;
-    background-color: #7986CB;
+    border-color: #5ab2ec;
+    background-color: #5ab2ec;
     color: #FFFFFF;
     padding-left: 20px;
     padding-right: 20px;
     transition: border-color 300ms, background-color 300ms; }
   .container .set-btn:hover {
-    border-color: #3F51B5;
-    background-color: #3F51B5; }
+    border-color: blue;
+    background-color: blue; }
   .container .delete-btn {
     width: 260px;
     margin-top: 10px;
@@ -172,16 +181,15 @@ input, button, input:active, input:focus, button:active, button:focus {
   .container .upload-btn {
     width: 260px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    border-color: #5ab2ec;
-    background-color: #5ab2ec;
+    border-color: #7986CB;
+    background-color: #7986CB;
     color: #FFFFFF;
     padding-left: 20px;
     padding-right: 20px;
     transition: border-color 300ms, background-color 300ms; }
   .container .upload-btn:hover {
-    border-color: blue;
-    background-color: blue; }
+    border-color: #3F51B5;
+    background-color: #3F51B5; }
   .container .alarm-list {
     float: left;
     text-align: left;
