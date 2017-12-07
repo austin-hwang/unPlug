@@ -13,6 +13,10 @@ AlarmClockController Class
 var fs = require('fs');
 var jsonObjects = new Array(2); 
 var canvas = "";
+var matches = false;
+var passed = false;
+var audElem = document.getElementsByTagName('audio')[0].getAttribute('id');
+var song = document.getElementById(audElem);
 
 Dropzone.options.myId = {
 	acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
@@ -20,11 +24,9 @@ Dropzone.options.myId = {
 	parallelUploads: 1,
 	previewsContainer: false,
 	init: function() {
-		
 	this.hiddenFileInput.setAttribute("capture", "camera");
 
 		this.on("success", function(file, res) {
-	
 			canvas = document.getElementById('canvas');
 			var ctx = canvas.getContext('2d');
 			var img = new Image();
@@ -127,7 +129,7 @@ AlarmClockController.prototype.setAlarmFormListener = function(el) {
 		} else {
 			swal(
 				'Oops...',
-				"Please enter valid inputs! (Don't forget to choose a nonprofit!)",
+				"Please enter valid inputs! (Don't forget to choose a nonprofit and upload first image!)",
 				'error'
 			);
 		}
@@ -140,85 +142,90 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 		this.app.setClock(event.data);
 		this.view.setClockView(this.app.clock);
 		if(this.app.clock.date.getSeconds() === 0 && this.app.checkAlarms()) {
-			var audElem = document.getElementsByTagName('audio')[0].getAttribute('id');
-			var song = document.getElementById(audElem);
 			song.play();
-			var isSnoozed = false;
+			this.isSnoozed(song);
 			//this.snoozed(song);
-			swal({
-				title: 'Your alarm went off!',
-				text: "Would you like to snooze or turn off your alarm?",
-				type: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Snooze!',
-				cancelButtonText: 'Turn Off!',
-				confirmButtonClass: 'btn btn-success',
-				cancelButtonClass: 'btn btn-danger',
-				buttonsStyling: false,
-				reverseButtons: true
-			  }).then((result) => {
-				if (result.value) {
-					song.pause();
-					song.currentTime = 0;
-					let hour = this.app.clock.date.getHours();
-					let min = this.app.clock.date.getMinutes() + 5;
-					if (min > 60) {
-						min = min % 60;
-						hour ++;
-					}
-					var period;
-					console.log(hour);
-					if (hour > 12) {
-						period = 'pm';
-					} else {
-						period = 'am';
-					}
-					hour = hour % 12;
-					var newAlarm = new Alarm(hour, min, period);
-					var newBtn = document.createElement("button");
-					var id = "deleteBtn" +  (this.counter + 1);
-					newBtn.setAttribute("id", id);
-					newBtn.innerHTML = "Delete Alarm";
-					this.app.addAlarm(newAlarm, newBtn);
-					this.view.setAlarmView(this.app.alarms);
-				  swal(
-					'Snoozed!',
-					'Your alarm has been snoozed.',
-					'success'
-					)
-				
-					var selected = document.getElementById("nonprofit");
-					var nonprofit = selected.options[selected.selectedIndex].text;
-					var transactionInfo = Date() + ": Donated $" + document.getElementById("money").value + " to " + nonprofit + "!\n"; 
-					console.log(transactionInfo);
-					fs.appendFile('/transactions.txt', transactionInfo, function(err) {
-					});
 
-					var xhr = new XMLHttpRequest();
-					xhr.open("POST", "http://localhost:1337/charge", true);
-					xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-					xhr.send(JSON.stringify({ amount: (document.getElementById("money").value)*100 }));
-				// result.dismiss can be 'cancel', 'overlay',
-				// 'close', and 'timer'
-				} else if (result.dismiss === 'cancel') {
-					$("#myId2").get(0).click();
-					//$("#myId").get(0).hiddenFileInput.click();
-					song.pause();
-					song.currentTime = 0;
-				  swal(
-					'Turned Off!',
-					'Your alarm has been turned off!',
-					'error'
-				  )
-				}
-			  })
 		}
 	}.bind(this))
 }
 
+AlarmClockController.prototype.isSnoozed = function (song) {
+	swal({
+		title: 'Your alarm went off!',
+		text: "Would you like to snooze or turn off your alarm?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Snooze!',
+		cancelButtonText: 'Turn Off!',
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false,
+		reverseButtons: true
+		}).then((result) => {
+		if (result.value) {
+			song.pause();
+			song.currentTime = 0;
+			let hour = this.app.clock.date.getHours();
+			let min = this.app.clock.date.getMinutes() + 5;
+			if (min > 60) {
+				min = min % 60;
+				hour ++;
+			}
+			var period;
+			console.log(hour);
+			if (hour > 12) {
+				period = 'pm';
+			} else {
+				period = 'am';
+			}
+			hour = hour % 12;
+			var newAlarm = new Alarm(hour, min, period);
+			var newBtn = document.createElement("button");
+			var id = "deleteBtn" +  (this.counter + 1);
+			newBtn.setAttribute("id", id);
+			newBtn.innerHTML = "Delete Alarm";
+			this.app.addAlarm(newAlarm, newBtn);
+			this.view.setAlarmView(this.app.alarms);
+			swal(
+			'Snoozed!',
+			'Your alarm has been snoozed.',
+			'success'
+			)
+		
+			var selected = document.getElementById("nonprofit");
+			var nonprofit = selected.options[selected.selectedIndex].text;
+			var transactionInfo = Date() + ": Donated $" + document.getElementById("money").value + " to " + nonprofit + "!\n"; 
+			console.log(transactionInfo);
+			fs.appendFile('/transactions.txt', transactionInfo, function(err) {
+			});
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "http://localhost:1337/charge", true);
+			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xhr.send(JSON.stringify({ amount: (document.getElementById("money").value)*100, description: transactionInfo }));
+		// result.dismiss can be 'cancel', 'overlay',
+		// 'close', and 'timer'
+		} else if (result.dismiss === 'cancel') {
+			$("#myId2").get(0).click();
+			if (matches == false) {
+				this.isSnoozed(song);
+		
+			} 
+		}
+		})
+}
+
 function processImage(link, counter) {
+	/*swal({
+		title: 'Uploading image!',
+		text: 'Processing...',
+		onOpen: () => {
+			swal.showLoading()
+		}
+	})*/
 	// **********************************************
 	// *** Update or verify the following values. ***
 	// **********************************************
@@ -246,7 +253,8 @@ function processImage(link, counter) {
 	// Display the image.
 	var sourceImageUrl = link;
 	// document.querySelector("#sourceImage").src = sourceImageUrl;
-
+	alertify.set({ delay: 3000 });
+	alertify.log("Image processing...");
 	// Perform the REST API call.
 	$.ajax({
 		url: uriBase + "?" + $.param(params),
@@ -274,6 +282,7 @@ function processImage(link, counter) {
 			jsonObjects[1] = data.description.tags;
 		}
 		console.log(jsonObjects);
+
 		if(counter == 2){
 			var img1Tags = jsonObjects[0];
 			var img2Tags = jsonObjects[1];
@@ -288,9 +297,15 @@ function processImage(link, counter) {
 			var avgTags = (img1Tags.length + img2Tags.length) / 2;
 			console.log("sharedTags: ", sharedTags, "\navgTags: ", avgTags, "\nratio: ", sharedTags / avgTags);
 			if (sharedTags / avgTags > .5){
-				return true;
+				alertify.success("Images matched!");
+				matches = true;
+				song.pause();
+				song.currentTime = 0;
+				matches = false;
+				swal.close();
 			} else {
-				return false;
+				alertify.error("Images do not match, please try again!");
+				matches = false;
 			}		
 		}
 	})

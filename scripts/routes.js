@@ -18,12 +18,14 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(express.static(__dirname + '/public'));
+
 app.post("/charge", function(req, res){
     stripe.charges.create({
         amount: req.body.amount,
         currency: "usd",
         source: "tok_visa", // obtained with Stripe.js
-        description: "Charge for testing"
+        description: req.body.description
       }, function(err, charge) {
         // asynchronously called
       });

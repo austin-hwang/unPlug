@@ -197,7 +197,8 @@ input, button, input:active, input:focus, button:active, button:focus {
   .container .alarm-item {
     background-color: #E0E0E0;
     color: #9E9E9E;
-    padding: 10px; }
+    padding: 10px;
+    margin-bottom: 10px; }
   .container .alert-box {
     background-color: #F44336;
     float: left;
