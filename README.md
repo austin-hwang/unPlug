@@ -8,8 +8,11 @@ In order to use unPlug, one has two options. They can access the app as it is me
 1. Open the project, using either Xcode or the website.
     * Xcode (on Mac): 
         * If you have not yet, follow instructions at https://developer.apple.com/xcode/ to download Xcode. 
+        * Go to https://gonative.io/manage/bqaecn25tvwmnrdc57mkwkdbdc and download the iOS Source Code.
         * Open the GoNativeIOS.xcodeproj file using Xcode.
         * Using the Build button in the top-left corner or Cmd-Shift-R shortcut, build the project, which will launch it in an iPhone simulator.
+    * Online iPhone / Android Simulators:
+        * Visit https://gonative.io/share/rzorkj and hit “Tap to Play” on the iPhone / Android simulators as you wish. You can explore the app through there!
     * Webpage: 
         * Go to the website hosted at https://cs50unplug.herokuapp.com/.
 2. Create your first alarm! To do so, you must set the following:
