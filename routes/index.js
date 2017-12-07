@@ -14,18 +14,22 @@ router.get('/', function(req, res, next) {
      res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
 
+// GET how to page
 router.get('/how', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../views', 'how.html'));
 });
 
+// Get about us page
 router.get('/about', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../views', 'about.html'));
 });
 
+// Allows to parse req.body
 router.use(bodyParser.urlencoded({ extended: false }))
 
 router.use(bodyParser.json())
 
+// Disable cors
 router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
