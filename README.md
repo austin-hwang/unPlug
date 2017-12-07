@@ -3,14 +3,14 @@
 unPlug is an alarm clock app that sends money to a user-specified charity whenever the user presses "Snooze" to incentivize them to wake up in the morning. In order to ensure that the user has actually woken up, we require them to upload an image of an object far away from their bed when they first set any alarms, and they can disable the alarm only if they take an image of that same object when trying to turn it off.
 
 ### Using unPlug
-In order to use unPlug, one has two options. They can access the app as it is meant to be used on an iPhone using Xcode, or access the web-app through the website hosted on Heroku at [https://cs50unplug.herokuapp.com/]. Using the project is fairly straightforward and requires the following steps:
+In order to use unPlug, one has two options. They can access the app as it is meant to be used on an iPhone using Xcode, or access the web-app through the website hosted on Heroku at https://cs50unplug.herokuapp.com/. Using the project is fairly straightforward and requires the following steps:
 1. Open the project, using either Xcode or the website.
     * Xcode (on Mac): 
-        * If you have not yet, follow instructions at [https://developer.apple.com/xcode/] to download Xcode. 
+        * If you have not yet, follow instructions at https://developer.apple.com/xcode/ to download Xcode. 
         * Open the unplug.xcodeproj file using Xcode.
         * Using the Build button in the top-left corner or Cmd-Shift-R shortcut, build the project, which will launch it in an iPhone simulator.
     * Webpage: 
-        * Go to the website hosted at [https://cs50unplug.herokuapp.com/].
+        * Go to the website hosted at https://cs50unplug.herokuapp.com/.
 2. Create your first alarm! To do so, you must set the following:
     * a *time* (HH:MM),
     * a *time period* (AM or PM), 
