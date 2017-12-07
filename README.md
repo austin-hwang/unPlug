@@ -25,16 +25,19 @@ Currently, there is a test credit card token in place in order to make demo-ing 
 (Our trial API Key for Microsoft Azure expires 01/05/2018)
 
 ## Technologies
-<p> <b>Microsoft Azure</b> - Computer Vision API and Face API</p>
+<p> <b>Microsoft Azure</b> - Computer Vision API and Face API</p> 
 ![alt text](https://www.westconcomstor.com/content/dam/wcgcom/Global/Cloud/Vendors/Microsoft/Azure/Azure%20cloud.png)
 
-<p> <b>Imgur</b> - Photo API</p> 
+<p> <b>Stripe</b> - Payments API</p>
+![alt text](https://cdn.slidesharecdn.com/ss_thumbnails/stripe-170224113653-thumbnail-4.jpg?cb=1487936764)
+
+<p> <b>Imgur</b> - Photo API</p>
 ![alt text](https://i.imgur.com/gZ0IUVh.png)
 
 <p> <b>XCode</b> - iOS Development</p>
 ![alt text](https://cdn.macrumors.com/article-new/2015/09/xcode-6-250x250.png)
 
-<p> <b>Dropone.js</b> - Photo Upload API</p> 
+<p> <b>Dropone.js</b> - Photo Upload API</p>
 ![alt text](https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/08/1470508920Screenshot-2016-08-06-14.36.57.png)
 
 <p> <b>SweetAlert2</b> - Stylish Alerts & Modals</p>
@@ -43,8 +46,8 @@ Currently, there is a test credit card token in place in order to make demo-ing 
 <p> <b>Heroku</b> - Cloud Application Platform</p>
 ![alt text](https://softwareengineeringdaily.com/wp-content/uploads/2016/10/herokukafka.png)
 
+
 ## Contributors and Maintainers
 Below are the team members who worked on the project. If you would like to contribute, create a pull request and we'll go from there.
 - [Austin Hwang](https://github.com/austin-hwang)
 - [Manasi Maheshwari](https://github.com/manasi-m)
-
