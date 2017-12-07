@@ -28,12 +28,13 @@ Dropzone.options.myId = {
 			canvas = document.getElementById('canvas');
 			var ctx = canvas.getContext('2d');
 			var img = new Image();
+			img.setAttribute('crossOrigin', 'anonymous');
 			img.onload = function(){
 					ctx.drawImage(img,0,0, img.width, img.height, 0, 0, 260, canvas.height);
 				
 			};
 			img.src = res.data.link;
-			processImage(res.data.link);
+			processImage(res.data.link, 1);
 		});
 
 		this.on("reset", function(){
@@ -56,7 +57,7 @@ Dropzone.options.myId2 = {
 
 		this.on("success", function(file, res) {
 			canvas = document.getElementById('canvas2');
-			processImage(res.data.link);
+			processImage(res.data.link, 2);
 		});
 
 		this.on("reset", function(){
@@ -217,7 +218,7 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 	}.bind(this))
 }
 
-function processImage(link) {
+function processImage(link, counter) {
 	// **********************************************
 	// *** Update or verify the following values. ***
 	// **********************************************
@@ -273,6 +274,25 @@ function processImage(link) {
 			jsonObjects[1] = data.description.tags;
 		}
 		console.log(jsonObjects);
+		if(counter == 2){
+			var img1Tags = jsonObjects[0];
+			var img2Tags = jsonObjects[1];
+			var sharedTags = 0;
+			for (var i = 0; i < img1Tags.length; i++){
+				for (var j = 0; j < img2Tags.length; j++){
+					if (img1Tags[i] == img2Tags[j]){
+						sharedTags++;
+					}
+				}
+			}
+			var avgTags = (img1Tags.length + img2Tags.length) / 2;
+			console.log("sharedTags: ", sharedTags, "\navgTags: ", avgTags, "\nratio: ", sharedTags / avgTags);
+			if (sharedTags / avgTags > .5){
+				return true;
+			} else {
+				return false;
+			}		
+		}
 	})
 
 	.fail(function(jqXHR, textStatus, errorThrown) {
