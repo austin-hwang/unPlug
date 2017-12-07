@@ -14,6 +14,14 @@ router.get('/', function(req, res, next) {
      res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
 
+router.get('/how', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../views', 'how.html'));
+});
+
+router.get('/about', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../views', 'about.html'));
+});
+
 router.use(bodyParser.urlencoded({ extended: false }))
 
 router.use(bodyParser.json())

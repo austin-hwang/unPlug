@@ -249,7 +249,7 @@ function processImage(link, counter) {
 
 	// Display the image.
 	var sourceImageUrl = link;
-	// document.querySelector("#sourceImage").src = sourceImageUrl;
+
 	alertify.set({ delay: 3000 });
 	alertify.log("Image processing...");
 	// Perform the REST API call.
