@@ -203,7 +203,7 @@ AlarmClockController.prototype.isSnoozed = function (song) {
 			});
 
 			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "http://localhost:1337/charge", true);
+			xhr.open("POST", "/charge", true);
 			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 			xhr.send(JSON.stringify({ amount: (document.getElementById("money").value)*100, description: transactionInfo }));
 		// result.dismiss can be 'cancel', 'overlay',
