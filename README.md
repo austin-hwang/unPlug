@@ -8,7 +8,7 @@ In order to use unPlug, one has two options. They can access the app as it is me
 1. Open the project, using either Xcode or the website.
     * Xcode (on Mac): 
         * If you have not yet, follow instructions at https://developer.apple.com/xcode/ to download Xcode. 
-        * Open the unplug.xcodeproj file using Xcode.
+        * Open the GoNativeIOS.xcodeproj file using Xcode.
         * Using the Build button in the top-left corner or Cmd-Shift-R shortcut, build the project, which will launch it in an iPhone simulator.
     * Webpage: 
         * Go to the website hosted at https://cs50unplug.herokuapp.com/.
