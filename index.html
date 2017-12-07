@@ -121,7 +121,7 @@
 		
 		<div>
 			<form id ="myId" class="dropzone" enctype="multipart/form-data">
-			<div class="dz-message" data-dz-message><span>Take first image</span></div>
+			<div class="dz-message" data-dz-message><span>Upload first image</span></div>
 			</form>
 
 			<form id ="myId2" class="dropzone" enctype="multipart/form-data">
@@ -139,7 +139,7 @@
 (function($) {
 	$.fn.spinner = function() {
 		this.each(function() {
-			var el = $(this);
+			var el = $(this).val((1).toFixed(2));
 
 			// add elements
 			el.wrap('<span class="spinner"></span>');     
@@ -149,13 +149,13 @@
 			// substract
 			el.parent().on('click', '.sub', function () {
 				if (el.val() > parseInt(el.attr('min')))
-					el.val( function(i, oldval) { return --oldval; });
+					el.val( function(i, oldval) { oldval = (oldval -.1).toFixed(2) ; return oldval; });
 			});
 
 			// increment
 			el.parent().on('click', '.add', function () {
 				if (el.val() < parseInt(el.attr('max')))
-					el.val( function(i, oldval) { return ++oldval; });
+					el.val( function(i, oldval) { oldval++; oldval = (oldval - 0.9).toFixed(2); return oldval; });
 			});
 	    });
 	};
