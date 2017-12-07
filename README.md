@@ -1,4 +1,5 @@
 # unPlug
+![alt text](https://i.imgur.com/mAQuqQ6.png)
 
 unPlug is an alarm clock app that sends money to a user-specified charity whenever the user presses "Snooze" to incentivize them to wake up in the morning. In order to ensure that the user has actually woken up, we require them to upload an image of an object far away from their bed when they first set any alarms, and they can disable the alarm only if they take an image of that same object when trying to turn it off. Thus, you can wake up faster or sleep knowing you contributed to a humanitarian cause!
 
