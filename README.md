@@ -1,7 +1,7 @@
 # unPlug
 ![alt text](https://i.imgur.com/mAQuqQ6.png)
 
-unPlug is an alarm clock app that sends money to a user-specified charity whenever the user presses "Snooze" to incentivize them to wake up in the morning. In order to ensure that the user has actually woken up, we require them to upload an image of an object far away from their bed when they first set any alarms, and they can disable the alarm only if they take an image of that same object when trying to turn it off. Thus, you can wake up faster or sleep knowing you contributed to a humanitarian cause!
+unPlug is an alarm clock app that sends money to a user-specified charity whenever the user presses "Snooze" to incentivize them to wake up in the morning. In order to ensure that the user has actually woken up, we require them to upload an image of an object far away from their bed when they first set any alarms, and they can disable the alarm only if they take an image of that same object when trying to turn it off. Thus, you can wake up faster or sleep knowing your bank account is a little less full (but at least you contributed to a humanitarian cause!).
 
 ## Using unPlug
 In order to use unPlug, one has two options. They can access the app as it is meant to be used on an iPhone using Xcode, or access the web-app through the website hosted on Heroku at https://cs50unplug.herokuapp.com/. Using the project is fairly straightforward and requires the following steps:
