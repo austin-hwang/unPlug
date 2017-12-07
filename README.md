@@ -20,6 +20,7 @@ In order to use unPlug, one has two options. They can access the app as it is me
     * *upload an image* of an object far away from your bed that will be compared to when turning off the alarm.
 3. Wait for the alarm to ring … Maybe take a nap during this time.
 4. When the alarm rings, choose to either turn it off by *taking a photo* of the object you initially uploaded (far away from your bed, requiring you to get up) OR *snoozing*. *Beware: Snoozing sends money to the charity you chose!* 
+![alt text](https://i.imgur.com/Tvsy8mL.jpg)
 ## Limitations
 Currently, there is a test credit card token in place in order to make demo-ing the app easier, but in theory, a user could input their credit card information in order to make payments to the charity.
 (Our trial API Key for Microsoft Azure expires 01/05/2018)
