@@ -258,7 +258,7 @@ function processImage(link, counter) {
 	// **********************************************
 
 	// Replace the subscriptionKey string value with your valid subscription key.
-	// 30-day API Key expires on 
+	// 30-day Trial API Key expires on 01/05/2018
 	var subscriptionKey = "a20bbb45a4c745e9af453b51acb954b6";
 
 	// Replace or verify the region.
