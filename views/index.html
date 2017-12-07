@@ -1,20 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <title>unPlug</title>
   <meta charset="utf-8">
   <meta name="description" content="unPlug Alarm Clock App">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon shortcut" href="https://www.squarespace.com/favicon.ico">
-  <!-- Create new versions of the link so it updates each time -->
-  <script>document.write('<link rel="stylesheet" href="./stylesheets/styles.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <!-- Import APIs and stylesheets  -->
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="./stylesheets/alertify.core.css" />
-  <link rel="stylesheet" href="./stylesheets/alertify.default.css"/>
+  <!-- Create new versions of the link so it updates each time for developing -->
+  <script>document.write('<link rel="stylesheet" href="./stylesheets/styles.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <script>document.write('<link rel="stylesheet" href="./stylesheets/normalize.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <script>document.write('<link rel="stylesheet" href="./stylesheets/cs-select.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <script>document.write('<link rel="stylesheet" href="./stylesheets/cs-skin-elastic.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./stylesheets/alertify.core.css" />
+  <link rel="stylesheet" href="./stylesheets/alertify.default.css"/>
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <script src="./javascripts/alertify.min.js"></script>
   <script src="./javascripts/dropzone.js"></script>
@@ -48,125 +49,138 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
-  
 </head>
+
 <body>
-	<header class="app-header">
-		<h1 class="app-title">UNPLUG</h1>
-	</header>
-	<!-- Create clock and alarm -->
-	<main class="container">
-		<div id="timeBox" class="time-box"></div>
-		<div class="alarm-form">
-			<form id="alarmForm">
-				<input id="alarmHour" form="alarmForm" class="alarm-input"/>
-				<input id="alarmMinute" class="alarm-input"/>
-				<div id="periodBtns">
-					<button id="amBtn" type="button" value="am" class="alarm-btn period-btn active-period-btn">AM</button>
-					<button id="pmBtn" type="button" value="pm" class="alarm-btn period-btn">PM</button>
-				</div>
-				<button id="setAlarmBtn" form="alarmForm" class="alarm-btn set-btn">SET ALARM</button>
-			</form>
-			<!-- Dropdown menu of nonprofits -->
-			<section>
-					<select id="nonprofit" class="cs-select cs-skin-elastic">
-						<option value="" disabled selected>SELECT NONPROFIT</option>
-						<option value="Save the Children">Save the Children</option>
-						<option value="Feed the Hungry">Feed the Hungry</option>
-						<option value="The Wildlife Trusts">The Wildlife Trusts</option>
-						<option value="Horizons for Homeless">Horizons for Homeless</option>
-					</select>
-				</section>
-				<div>
-				<!-- Spinner for amount of money to spend per snooze -->
-				<form>
-					<input id="money" step=".1" type="number" min="1" max="100" value="1" />
-				</form>
-				</div>
-			<!-- Transactions button -->
-			<button onclick="openTransactions()" id="transactions" class="alarm-btn transaction-btn">TRANSACTIONS</button>
-			<!-- List of transactions pop up -->
-			<script>
-				function openTransactions(){
-					var content = ""
-					fs.readFile('/transactions.txt', function(err, contents) {
-					   content = contents.toString();
-					});
-					swal({
-						title: "<p>" + content + "</p>",
-						background: '#fff url(//thumbs.dreamstime.com/b/color-money-background-stationery-739106.jpg)',
-					})
-				}
-			</script>
-		</div>
-		<div class="alarm-list">
-			<h2 class="app-title1">Alarms</h2>
-			<div class="buttons">
-				<div id="alarmBox">
-					<div class="alarm-item">No Alarms Set</div>
-				</div>
-			</div>
-		</div>
-	
-		<h2 class="app-title1">Images</h2>
-		<!-- Button using Dropzone to upload images -->
-		<div>
-			<form id ="myId" class="dropzone" enctype="multipart/form-data">
-			<div class="dz-message" data-dz-message><span>Upload first image</span></div>
-			</form>
+    <header class="app-header">
+        <h1 class="app-title">UNPLUG</h1>
+    </header>
+    <!-- Create clock and alarm -->
+    <main class="container">
+        <div id="timeBox" class="time-box"></div>
+        <div class="alarm-form">
+            <form id="alarmForm">
+                <input id="alarmHour" form="alarmForm" class="alarm-input" />
+                <input id="alarmMinute" class="alarm-input" />
+                <div id="periodBtns">
+                    <button id="amBtn" type="button" value="am" class="alarm-btn period-btn active-period-btn">AM</button>
+                    <button id="pmBtn" type="button" value="pm" class="alarm-btn period-btn">PM</button>
+                </div>
+                <button id="setAlarmBtn" form="alarmForm" class="alarm-btn set-btn">SET ALARM</button>
+            </form>
+            <!-- Dropdown menu of nonprofits -->
+            <section>
+                <select id="nonprofit" class="cs-select cs-skin-elastic">
+                    <option value="" disabled selected>SELECT NONPROFIT</option>
+                    <option value="Save the Children">Save the Children</option>
+                    <option value="Feed the Hungry">Feed the Hungry</option>
+                    <option value="The Wildlife Trusts">The Wildlife Trusts</option>
+                    <option value="Horizons for Homeless">Horizons for Homeless</option>
+                </select>
+            </section>
+            <div>
+                <!-- Spinner for amount of money to spend per snooze -->
+                <form>
+                    <input id="money" step=".1" type="number" min="1" max="100" value="1" />
+                </form>
+            </div>
+            <!-- Transactions button -->
+            <button onclick="openTransactions()" id="transactions" class="alarm-btn transaction-btn">TRANSACTIONS</button>
+            <!-- List of transactions pop up -->
+            <script>
+            function openTransactions() {
+                var content = ""
+                fs.readFile('/transactions.txt', function(err, contents) {
+                    content = contents.toString();
+                });
+                swal({
+                    title: "<p>" + content + "</p>",
+                    background: '#fff url(//thumbs.dreamstime.com/b/color-money-background-stationery-739106.jpg)',
+                })
+            }
+            </script>
+        </div>
+        <div class="alarm-list">
+            <h2 class="app-title1">Alarms</h2>
+            <div class="buttons">
+                <div id="alarmBox">
+                    <div class="alarm-item">No Alarms Set</div>
+                </div>
+            </div>
+        </div>
+        <h2 class="app-title1">Images</h2>
+        <!-- Button using Dropzone to upload images -->
+        <div>
+            <form id="myId" class="dropzone" enctype="multipart/form-data">
+                <div class="dz-message" data-dz-message><span>Upload first image</span></div>
+            </form>
+            <form id="myId2" class="dropzone" enctype="multipart/form-data">
+            </form>
+        </div>
+        <!-- Canvas to display the first image -->
+        <canvas id="canvas"></canvas>
+        <canvas id="canvas2"></canvas>
+    </main>
+    <!-- Currency spinner changes on click -->
+    <script>
+    (function($) {
+        $.fn.spinner = function() {
+            this.each(function() {
+                var el = $(this).val((1).toFixed(2));
 
-			<form id ="myId2" class="dropzone" enctype="multipart/form-data">
-			</form>
-		</div>
-		<!-- Canvas to display the first image -->
-		<canvas id="canvas"></canvas>
-		<canvas id="canvas2"></canvas>
+                // add elements
+                el.wrap('<span class="spinner"></span>');
+                el.before('<span class="sub">-</span>');
+                el.after('<span class="add">+</span>');
 
-	</main>
+                // substract
+                el.parent().on('click', '.sub', function() {
+                    if (el.val() > parseInt(el.attr('min')))
+                        el.val(function(i, oldval) { oldval = (oldval - .1).toFixed(2); return oldval; });
+                });
 
-<!-- Currency spinner changes on click -->
-<script>
-(function($) {
-	$.fn.spinner = function() {
-		this.each(function() {
-			var el = $(this).val((1).toFixed(2));
+                // increment
+                el.parent().on('click', '.add', function() {
+                    if (el.val() < parseInt(el.attr('max')))
+                        el.val(function(i, oldval) {
+                            oldval++;
+                            oldval = (oldval - 0.9).toFixed(2);
+                            return oldval;
+                        });
+                });
+            });
+        };
+    })(jQuery);
 
-			// add elements
-			el.wrap('<span class="spinner"></span>');     
-			el.before('<span class="sub">-</span>');
-			el.after('<span class="add">+</span>');
-
-			// substract
-			el.parent().on('click', '.sub', function () {
-				if (el.val() > parseInt(el.attr('min')))
-					el.val( function(i, oldval) { oldval = (oldval -.1).toFixed(2) ; return oldval; });
-			});
-
-			// increment
-			el.parent().on('click', '.add', function () {
-				if (el.val() < parseInt(el.attr('max')))
-					el.val( function(i, oldval) { oldval++; oldval = (oldval - 0.9).toFixed(2); return oldval; });
-			});
-	    });
-	};
-})(jQuery);
-
-$('input[type=number]').spinner();
-</script>
-<!-- Function for dropdown menu style -->
-<script>
-	(function() {
-		[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
-			new SelectFx(el);
-		} );
-	})();
-</script>
-	<audio src="bell.mp3" loop="true" id="bell" enablejavascript="true">
-	<script>document.write('<script src="./javascripts/models/Clock.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
-	<script>document.write('<script src="./javascripts/models/Alarm.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
-	<script>document.write('<script src="./javascripts/models/AlarmClockApp.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
-	<script>document.write('<script src="./javascripts/models/AlarmClockView.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
-	<script>document.write('<script src="./javascripts/models/AlarmClockController.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
-	<script>document.write('<script src="./javascripts/initial.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');</script>
+    $('input[type=number]').spinner();
+    </script>
+    <!-- Function for dropdown menu style -->
+    <script>
+    (function() {
+        [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function(el) {
+            new SelectFx(el);
+        });
+    })();
+    </script>
+    <audio src="bell.mp3" loop="true" id="bell" enablejavascript="true">
+        <script>
+        document.write('<script src="./javascripts/models/Clock.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
+        <script>
+        document.write('<script src="./javascripts/models/Alarm.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
+        <script>
+        document.write('<script src="./javascripts/models/AlarmClockApp.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
+        <script>
+        document.write('<script src="./javascripts/models/AlarmClockView.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
+        <script>
+        document.write('<script src="./javascripts/models/AlarmClockController.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
+        <script>
+        document.write('<script src="./javascripts/initial.js?dev=' + Math.floor(Math.random() * 1000) + '"\><\/script>');
+        </script>
 </body>
+
 </html>

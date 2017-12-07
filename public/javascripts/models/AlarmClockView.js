@@ -28,13 +28,18 @@ AlarmClockView.prototype.setSelectedPeriodBtn = function(btn) {
 AlarmClockView.prototype.setAlarmView = function(alarms) {
 	this.alarmBox.innerHTML = '';
 	alarms.forEach(function(item) {
+		// Obtains alarm object from dictionary
 		var alarm = item.value;
 		var alarmEl = document.createElement('div');
 		alarmEl.classList.add('alarm-item');
 		alarmEl.textContent = alarm.toString();
+		// Obtains button object from dictionary
 		var button = item.key;
+		// Adds class to buttons
 		button.classList.add('alarm-btn');
 		button.classList.add('delete-btn');
+
+		// Adds alarm and button to html
 		this.alarmBox.appendChild(alarmEl);
 		this.alarmBox.appendChild(button);
 	}, this)
