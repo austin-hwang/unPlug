@@ -1,6 +1,7 @@
 
 /*
- *
+ * Imported from Dropzone.js
+ * 
  * More info at [www.dropzonejs.com](http://www.dropzonejs.com)
  *
  * Copyright (c) 2012, Matias Meno

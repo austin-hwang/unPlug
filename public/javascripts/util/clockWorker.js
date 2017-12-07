@@ -1,5 +1,6 @@
-//Web Worker
-//posts new Date Object to main thread every second
+// Imported from https://github.com/wkashdan/alarm-clock
+// Web Worker
+// Posts new Date Object to main thread every second
 function oneSecondTimer() {
 	setTimeout(function() {
 		postMessage(new Date());

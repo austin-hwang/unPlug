@@ -1,21 +1,14 @@
-/*
+/* Started with code from https://github.com/wkashdan/alarm-clock , Changed to match our specifications
 AlarmClockView Class
 	
 	Attributes:
 		- timeBox: DOM Element for time
-		- alarmBox: DOM Elemetn for alarms
-		- alertBox: DOM Element for alert
+		- alarmBox: DOM Element for alarms
 		- selectedPeriodBtn: current selected period button (am/pm)
-	Method:
-		- setClockView
-		- setSelectedPeriodBtn
-		- setAlarmView
-		- showAlert
 */
-function AlarmClockView(timeBox, alarmBox, alertBox, selectedPeriodBtn) {
+function AlarmClockView(timeBox, alarmBox, selectedPeriodBtn) {
 	this.timeBox = timeBox;
 	this.alarmBox = alarmBox;
-	this.alertBox = alertBox;
 	this.selectedPeriodBtn = selectedPeriodBtn;
 }
 
@@ -45,13 +38,4 @@ AlarmClockView.prototype.setAlarmView = function(alarms) {
 		this.alarmBox.appendChild(alarmEl);
 		this.alarmBox.appendChild(button);
 	}, this)
-}
-
-// Purpose: displays the alert for 5 seconds
-AlarmClockView.prototype.showAlert = function(msg) {
-	this.alertBox.textContent = msg;
-	this.alertBox.style.display = 'block';
-	setTimeout(function(){
-		this.alertBox.style.display = 'none';
-	}, 5000);
 }

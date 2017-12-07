@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400);
+
+/* Currency spinner */
 #spinner {
   position: absolute;
   top: 0;
@@ -70,8 +72,6 @@ span.spinner > .add:hover {
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; }
 
-/* Color Variables */
-/* Size Variables */
 html, body {
   margin: 0px;
   padding: 0px;
@@ -102,6 +102,7 @@ input, button, input:active, input:focus, button:active, button:focus {
   padding-bottom: 20px;
   font-size: 20px; }
 
+/* Button colors, sizes */
 .container {
   width: 260px;
   margin: 0px auto;
@@ -243,6 +244,22 @@ input, button, input:active, input:focus, button:active, button:focus {
   border-radius: 25px;
   margin-bottom: 10px; }
 
+/* Picture upload */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+  
 .dropzone:hover {
   border-color: #3F51B5;
   background-color: #3F51B5; }

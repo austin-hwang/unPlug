@@ -1,4 +1,4 @@
-/*!
+/*! Used for Nonprofit Select menu
  * classie - class helper functions
  * from bonzo https://github.com/ded/bonzo
  * 

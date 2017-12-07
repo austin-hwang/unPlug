@@ -1,36 +1,33 @@
-/*
+/* Started with code from https://github.com/wkashdan/alarm-clock for setClock, addAlarm, and checkAlarms 
+	but changed a lot
+
 AlarmClockApp Class
 
 	Attributes:
 		- clock: Clock Object
 		- alarms: Array of Alarm Objects
 		- selectedPeriod: 'am' or 'pm'
-	Methods:
-		- setClock: sets clock from Date object
-		- addAlarm: adds an Alarm Object to array
-		- checkAlarms: checks the alarm array for an alarm equal to clock time
-
 */
 
-//Clock.js must be loaded prior to callign this constructor
+//Clock.js must be loaded prior to calling this constructor
 function AlarmClockApp() {
 	this.clock = new Clock();
 	this.alarms = [];
-	this.buttons = [];
 	this.selectedPeriod = 'am';
 }
 
-// Consumes: Date Object
+// Set Clock time to Date Object
 AlarmClockApp.prototype.setClock = function(date) {
 	this.clock.date = date;
 }
 
-//Consumes: Alarm object
+// Add alarm to alarms list
 AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 	this.alarms.push({
 		key:   btn,
 		value: alarm
 	});
+	// Show alert
 	swal(
 		'Adding alarm..',
 		'Added!',
@@ -38,6 +35,7 @@ AlarmClockApp.prototype.addAlarm = function(alarm, btn) {
 	  )
 }
 
+// Delete alarm from alarms list
 AlarmClockApp.prototype.deleteAlarm = function(button) {
 	for (var i = 0; i < this.alarms.length; i++) {
 		if (this.alarms[i].key == button) {

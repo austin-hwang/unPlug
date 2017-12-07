@@ -1,20 +1,17 @@
-/*
+/* Started with foundation from https://github.com/wkashdan/alarm-clock but changed almost everything
+
 AlarmClockController Class
 	
 	Attributes:
 		- app: AlarmClockApp Object
 		- view: AlarmClockView Object
-	Method:
-		- setPeriodBtnListener
-		- setAlarmFormListener
-		- setClockWorkerListener
 */
 
+// Create global variables
 var fs = require('fs');
 var jsonObjects = new Array(2); 
 var canvas = "";
 var matches = false;
-var passed = false;
 var audElem = document.getElementsByTagName('audio')[0].getAttribute('id');
 var song = document.getElementById(audElem);
 

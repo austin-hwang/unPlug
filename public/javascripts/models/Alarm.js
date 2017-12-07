@@ -1,13 +1,6 @@
-/*
+/* Code started from https://github.com/wkashdan/alarm-clock but changed
+Sets up alarm and checks if valid
 Alarm Class
-	
-	Preconditions: must pass in a valid hour, minute and period
-	Attributes:
-		- date: a Date object that has the correct hour and minute of the alarm
-	Methods:
-		- equals
-		- toString
-		- isValid
 */
 function Alarm(hour, min, period) {
 	this.hour = hour;
@@ -26,20 +19,20 @@ function Alarm(hour, min, period) {
 }
 
 /*
-Consumes: a Date Object
-Returns: boolean
+Consumes a Date Object
+Returns boolean
 */
 Alarm.prototype.equals = function(date) {
 	return date.getHours() === this.date.getHours() && 
 		date.getMinutes() === this.date.getMinutes();
 }
 
-//Returns: time string
+//Returns time string
 Alarm.prototype.toString = function() {
 	return this.date.toLocaleTimeString('en-US');
 }
 
-//Returns: boolean if horu and min are valid
+//Returns true if hour, min are valid, nonprofit is selected and initial picture is uploaded
 Alarm.prototype.isValid = function() {
 	var selected = document.getElementById("nonprofit");
 	var nonprofit = selected.options[selected.selectedIndex].text;

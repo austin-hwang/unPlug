@@ -14,7 +14,6 @@ document.onreadystatechange = function () {
 		//get required DOM elements
 		var timeBox = document.getElementById('timeBox');
 		var alarmBox = document.getElementById('alarmBox');
-		var alertBox = document.getElementById('alertBox');
 		var selectedPeriodBtn = document.getElementById('amBtn');
 		var periodBtns = document.getElementById('periodBtns');
 		var alarmForm = document.getElementById('alarmForm');
@@ -22,7 +21,7 @@ document.onreadystatechange = function () {
 
 		//init Data Models
 		var app = new AlarmClockApp();
-		var view = new AlarmClockView(timeBox, alarmBox, alertBox, selectedPeriodBtn);
+		var view = new AlarmClockView(timeBox, alarmBox, selectedPeriodBtn);
 		var controller = new AlarmClockController(app, view);
 		
 		//set initial view

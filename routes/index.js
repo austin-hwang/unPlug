@@ -1,3 +1,5 @@
+// Require Node dependencies gotten using npm install
+
 var express = require('express');
 var router = express.Router();
 var path = require('path');
@@ -7,11 +9,10 @@ var stripe = require("stripe")(
 var bodyParser = require('body-parser')
 var fs = require('fs');
 
-/* GET home page. */
+// GET home page.
 router.get('/', function(req, res, next) {
      res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
-
 
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -23,11 +24,7 @@ router.use(function(req, res, next) {
     next();
 });
 
-
-router.get('/', function(req, res, next) {
-    res.sendFile(path.join(__dirname, '../index.html'));
-});
-
+// Charge transactions using stripe
 router.post("/charge", function(req, res){
     stripe.charges.create({
         amount: req.body.amount,

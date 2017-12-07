@@ -1,4 +1,5 @@
-/**
+/**Used for Nonprofit Select menu
+ * 
  * selectFx.js v1.0.0
  * http://www.codrops.com
  *
