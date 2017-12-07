@@ -293,3 +293,32 @@ input, button, input:active, input:focus, button:active, button:focus {
 	background-color: orange;
 }
  
+
+.dropzone {
+	height: 45px;
+	width: 260px;
+	color: white;
+	border-color: #7986CB;
+	background-color: #7986CB;
+	border-radius: 25px;
+	margin-bottom: 10px;
+  }
+  
+.dropzone:hover{
+	border-color: #3F51B5;
+	background-color: #3F51B5;
+  }
+  
+.dropzone.dz-clickable {
+	cursor: pointer; }
+  
+.dropzone .dz-message {
+	text-align: center;
+	padding: 12px;
+	font-size: 1.25em;
+}
+
+	   
+#myId2 {
+	display: none;
+}

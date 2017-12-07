@@ -11,7 +11,62 @@ AlarmClockController Class
 */
 
 var fs = require('fs');
+var jsonObjects = new Array(2); 
+var canvas = "";
 
+Dropzone.options.myId = {
+	acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+	createImageThumbnails: false,
+	parallelUploads: 1,
+	previewsContainer: false,
+	init: function() {
+		
+	this.hiddenFileInput.setAttribute("capture", "camera");
+
+		this.on("success", function(file, res) {
+	
+			canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var img = new Image();
+			img.onload = function(){
+					ctx.drawImage(img,0,0, img.width, img.height, 0, 0, 260, canvas.height);
+				
+			};
+			img.src = res.data.link;
+			processImage(res.data.link);
+		});
+
+		this.on("reset", function(){
+		});
+	},
+	paramName: "image",
+	url : "https://api.imgur.com/3/upload",
+	addRemoveLinks: true,
+	headers: { "Authorization" : "Client-ID 3d0295885297563",  "Cache-Control": null, "X-Requested-With": null} 
+};
+
+Dropzone.options.myId2 = {
+	acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+	createImageThumbnails: false,
+	parallelUploads: 1,
+	previewsContainer: false,
+	init: function() {
+		
+	this.hiddenFileInput.setAttribute("capture", "camera");
+
+		this.on("success", function(file, res) {
+			canvas = document.getElementById('canvas2');
+			processImage(res.data.link);
+		});
+
+		this.on("reset", function(){
+		});
+	},
+	paramName: "image",
+	url : "https://api.imgur.com/3/upload",
+	addRemoveLinks: true,
+	headers: { "Authorization" : "Client-ID 3d0295885297563",  "Cache-Control": null, "X-Requested-With": null} 
+};
 function AlarmClockController(app, view){
 	this.app = app;
 	this.view = view;
@@ -147,6 +202,8 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 				// result.dismiss can be 'cancel', 'overlay',
 				// 'close', and 'timer'
 				} else if (result.dismiss === 'cancel') {
+					$("#myId2").get(0).click();
+					//$("#myId").get(0).hiddenFileInput.click();
 					song.pause();
 					song.currentTime = 0;
 				  swal(
@@ -159,51 +216,69 @@ AlarmClockController.prototype.setClockWorkerListener = function(worker, snoozed
 		}
 	}.bind(this))
 }
-/*
-AlarmClockController.prototype.snoozed = async function(song) {
-		await confirm(song);
-		let hour = this.app.clock.date.getHours();
-		let min = this.app.clock.date.getMinutes() + 5;
-		if (min > 60) {
-			min = min % 60;
-			hour ++;
-		}
-		var period;
-		if (hour > 12) {
-			period = 'pm';
-		} else {
-			period = 'am';
-		}
-		var newAlarm = new Alarm(hour, min, period);
-		var newBtn = document.createElement("button");
-		var id = "deleteBtn" +  (this.counter + 1);
-		newBtn.setAttribute("id", id);
-		newBtn.innerHTML = "Delete Alarm";
-		this.app.addAlarm(newAlarm, newBtn);
-		this.view.setAlarmView(this.app.alarms);
 
-		fs.writeFile('/test.txt', 'Cool, I can do this in the browser!', function(err) {
-			fs.readFile('/test.txt', function(err, contents) {
-			  console.log(contents.toString());
-			});
-		});
-}
+function processImage(link) {
+	// **********************************************
+	// *** Update or verify the following values. ***
+	// **********************************************
 
-function confirm (song) {
-	return new Promise(resolve => {
-		alertify.confirm("RING! Your alarm just went off!", function (e) {
-			if (e) {
-				alertify.success("SNOOZED");
-				song.pause();
-				song.currentTime = 0;
-				isSnoozed = true;
-				resolve();
-			} else {
-				alertify.error("TURNED OFF");
-				song.pause();
-				song.currentTime = 0;
-			}
-		});
+	// Replace the subscriptionKey string value with your valid subscription key.
+	var subscriptionKey = "a20bbb45a4c745e9af453b51acb954b6";
+
+	// Replace or verify the region.
+	//
+	// You must use the same region in your REST API call as you used to obtain your subscription keys.
+	// For example, if you obtained your subscription keys from the westus region, replace
+	// "westcentralus" in the URI below with "westus".
+	//
+	// NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+	// a free trial subscription key, you should not need to change this region.
+	var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze";
+
+	// Request parameters.
+	var params = {
+		"visualFeatures": "Categories,Description,Color",
+		"details": "",
+		"language": "en",
+	};
+
+	// Display the image.
+	var sourceImageUrl = link;
+	// document.querySelector("#sourceImage").src = sourceImageUrl;
+
+	// Perform the REST API call.
+	$.ajax({
+		url: uriBase + "?" + $.param(params),
+
+		// Request headers.
+		beforeSend: function(xhrObj){
+			xhrObj.setRequestHeader("Content-Type","application/json");
+			xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+		},
+
+		type: "POST",
+
+		// Request body.
+		data: '{"url": ' + '"' + sourceImageUrl + '"}',
 	})
-}
-*/
+
+	.done(function(data) {
+		console.log(data);
+		// Show formatted JSON on webpage.
+		$("#responseTextArea").val(JSON.stringify(data, null, 2));
+
+		if (canvas == document.getElementById('canvas')){
+			jsonObjects[0] = data.description.tags;
+		} else {
+			jsonObjects[1] = data.description.tags;
+		}
+		console.log(jsonObjects);
+	})
+
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		// Display error message.
+		var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+		errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+		alert(errorString);
+	});
+};

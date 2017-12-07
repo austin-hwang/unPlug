@@ -46,6 +46,9 @@ Alarm.prototype.isValid = function() {
 	if (nonprofit == "SELECT NONPROFITS") {
 		return false;
 	}
+	if (document.getElementById("canvas").toDataURL() == document.getElementById("canvas2").toDataURL()) {
+		return false;
+	}
 	return this.hour > 0 
 		&& this.hour < 13 
 		&& this.min > -1
