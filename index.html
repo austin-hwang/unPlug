@@ -14,6 +14,7 @@
   <script>document.write('<link rel="stylesheet" href="./styles/cs-select.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <script>document.write('<link rel="stylesheet" href="./styles/cs-skin-elastic.css?dev=' + Math.floor(Math.random() * 1000) + '"\>');</script>
   <script src="./scripts/alertify.min.js"></script>
+  <script src="./scripts/dropzone.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/sweetalert2@7.0.7/dist/sweetalert2.all.js"></script>
@@ -115,33 +116,20 @@
 			  }
 
 		</style>
-		<div class="upload-btn-wrapper">
-			<button class="alarm-btn upload-btn">Take first image</button>
-			<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" />
-		</div>
-		<div class="upload-btn-wrapper">
-			<button class="alarm-btn upload-btn">Take second image</button>
-			<input type="file" capture="camera" accept="image/*" id="cameraInput2" name="cameraInput2" />
-		</div>
-		
-		<script>
-			$("#cameraInput").change(function() {
-				var xhr = new XMLHttpRequest();
-				xhr.open("POST", "http://localhost:1337/image", true);
-				xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-				xhr.send(JSON.stringify({ image: (document.getElementById("cameraInput").value) }));
-			});
+		<h2 class="app-title1">Images</h2>
+		<div>
+			<form id ="myId" class="dropzone" enctype="multipart/form-data">
+			<div class="dz-message" data-dz-message><span>Take first image</span></div>
+			</form>
 
-			$("#cameraInput2").change(function() {
-				var xhr2 = new XMLHttpRequest();
-				xhr2.open("POST", "http://localhost:1337/image", true);
-				xhr2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-				xhr2.send(JSON.stringify({ image: (document.getElementById("cameraInput2").value) }));
-			});
-		</script>
+			<form id ="myId2" class="dropzone" enctype="multipart/form-data">
+				<div class="dz-message" data-dz-message><span>Take first image</span></div>
+				</form>
+		</div>
 
 		<canvas id="canvas"></canvas>
 		<canvas id="canvas2"></canvas>
+		<img data-dzt-thumbnail></img>
 		<div id="jsonOutput" style="width:600px; display:table-cell;">
 			Response 1:
 			<br><br>
@@ -151,144 +139,7 @@
 			Response 2:
 			<br><br>
 			<textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
-		</div>
-		<script>
-			var cameraInput = document.getElementById('cameraInput');
-			cameraInput.addEventListener('change', handleImage, false);
-			var canvas = document.getElementById('canvas');
-			var ctx = canvas.getContext('2d');
-			var jsonData1 = [];
-			var jsonData2 = [];
-			function handleImage(e){
-				var reader = new FileReader();
-				reader.onload = function(event){
-					var img = new Image();
-					img.onload = function(){
-						ctx.drawImage(img,0,0, img.width, img.height, 0, 0, 260, canvas.height);
-					}
-					img.src = event.target.result;
-				}
-				reader.readAsDataURL(e.target.files[0]);   
-				console.log(canvas.value);  
-			}
-
-			var cameraInput2 = document.getElementById('cameraInput2');
-			cameraInput2.addEventListener('change', handleImage2, false);
-			var canvas2 = document.getElementById('canvas2');
-			var ctx2 = canvas2.getContext('2d');
-			function handleImage2(e){
-				if (cameraInput.value){
-					var reader2 = new FileReader();
-					reader2.onload = function(event){
-						var img2 = new Image();
-						img2.onload = function(){
-							ctx2.drawImage(img2,0,0, img2.width, img2.height, 0, 0, 260, canvas2.height);
-						}
-						img2.src = event.target.result;
-					}
-					reader2.readAsDataURL(e.target.files[0]);
-					compareImages("https://i.imgur.com/gbc74ZS.jpg", "https://i.imgur.com/dB1C5hk.jpg", jsonData1, jsonData2);
-					//console.log(compareImages("https://i.imgur.com/gbc74ZS.jpg", "https://i.imgur.com/dB1C5hk.jpg"));
-					console.log(jsonData1 , jsonData1[0], jsonData2[0]);
-				} else {
-					swal(
-						'Oops...',
-						"There's no image to compare to!",
-						'error'
-					);
-				}				
-
-			}
-
-			async function compareImages(img1, img2, jsonData1, jsonData2){
-				await (processImage(img1, 1, jsonData1, jsonData2));
-				await (processImage(img2, 2, jsonData1, jsonData2));
-				console.log(jsonData1[0], jsonData2[0]);
-				var img1Tags = jsonData1[0].description.tags;
-				var img2Tags = jsonData2[0].description.tags;
-				var sharedTags = 0;
-				console.log(img1Tags, img2Tags);
-				for (var i = 0; i < img1Tags.length; i++){
-					for (var j = 0; j < img2Tags.length; j++){
-						if (img1Tags[i] == img2Tags[j]){
-							sharedTags++;
-						}
-					}
-				}
-				var avgTags = (img1Tags.length + img2Tags.length) / 2
-				console.log("sharedTags: ", sharedTags, "\navgTags: ", avgTags, "\nratio: ", sharedTags / avgTags)
-				if (sharedTags / avgTags > .5){
-					return true;
-				} else {
-					return false;
-				}
-			}
-		
-			function processImage(link, counter, jsonData) {
-				// **********************************************
-				// *** Update or verify the following values. ***
-				// **********************************************
-
-				// Replace the subscriptionKey string value with your valid subscription key.
-				var subscriptionKey = "a20bbb45a4c745e9af453b51acb954b6";
-
-				// Replace or verify the region.
-				//
-				// You must use the same region in your REST API call as you used to obtain your subscription keys.
-				// For example, if you obtained your subscription keys from the westus region, replace
-				// "westcentralus" in the URI below with "westus".
-				//
-				// NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-				// a free trial subscription key, you should not need to change this region.
-				var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze";
-
-				// Request parameters.
-				var params = {
-					"visualFeatures": "Categories,Description,Color",
-					"details": "",
-					"language": "en",
-				};
-
-				// Display the image.
-				var sourceImageUrl = link;
-
-				// Perform the REST API call.
-				$.ajax({
-					url: uriBase + "?" + $.param(params),
-
-					// Request headers.
-					beforeSend: function(xhrObj){
-					xhrObj.setRequestHeader("Content-Type","application/json");
-					xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-					},
-
-					type: "POST",
-
-					// Request body.
-					data: '{"url": ' + '"' + sourceImageUrl + '"}',
-				})
-
-				.done(function(data) {
-					//console.log(data.description.tags);
-					// Show formatted JSON on webpage.
-					$("#responseTextArea" + counter.toString()).val(JSON.stringify(data, null, 2));
-					if (counter == 1) {
-						jsonData1.push(data);
-						console.log(counter, jsonData1);	
-					} else if (counter == 2){
-						jsonData2.push(data);
-						console.log(counter, jsonData1);
-					}
-				})
-
-				.fail(function(jqXHR, textStatus, errorThrown) {
-					// Display error message.
-					var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-					errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
-					alert(errorString);
-				});
-			};
-		</script>
+		</div>		
 	</main>
 	<script src="scripts/classie.js"></script>
 	<script src="scripts/selectFx.js"></script>

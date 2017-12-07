@@ -3,25 +3,20 @@ var stripe = require("stripe")(
   );
 var bodyParser = require('body-parser')
 var express = require('express');
+var fs = require('fs');
 var app = express();
 
-var imgur = require('imgur-node-api');
-path = require('path');
- 
-imgur.setClientID("bfad3f46ce46366");
+path = require('path'); 
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.post("/image", function(req,res) {
-  var path = req.body.image;
-  imgur.upload(path.join(__dirname, path), function (err, res) {
-   // Log the imgur url 
-    var link = res.data.link;
-    console.log(link);
-  });
-})
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.post("/charge", function(req, res){
     stripe.charges.create({
